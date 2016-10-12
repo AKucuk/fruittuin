@@ -9,8 +9,44 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.abdullahkucuk.fruittuin.MainActivity">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_marginTop="35dp"
+        android:src="@drawable/bee"
+        android:layout_marginEnd="123dp"
+        android:layout_marginBottom="175dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Hallo!"
+        android:id="@+id/textView"
+        android:layout_marginBottom="92dp"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_toEndOf="@+id/textView2"
+        android:layout_marginStart="33dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Help jij mij?!"
+        android:id="@+id/textView2"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="32dp"
+        android:layout_below="@+id/textView"
+        android:layout_alignEnd="@+id/imageView" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volgende"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
