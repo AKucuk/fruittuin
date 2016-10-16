@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.abdullahkucuk.fruittuin.Helpers.UrlHelper;
+import com.example.abdullahkucuk.fruittuin.Models.UserModel;
 import com.example.abdullahkucuk.fruittuin.R;
 
 
@@ -42,21 +43,13 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
+                UserModel userModel = new UserModel();
+                userModel.name = name;
+
                 Intent intent = new Intent(MainActivity.this, IntroActivity.class);
-                intent.putExtra("name", name);
+                intent.putExtra("user", userModel);
                 startActivity(intent);
 
-                if(true)
-                    return;
-                try {
-
-                    //new Downloader(mainActivity).execute("http://www.akucuk.com");
-
-                }
-
-                catch (Exception ex) {
-                    label.setText(ex.getMessage());
-                }
             }
         });
     }

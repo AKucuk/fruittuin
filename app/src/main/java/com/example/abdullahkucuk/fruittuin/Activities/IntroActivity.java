@@ -1,6 +1,7 @@
 package com.example.abdullahkucuk.fruittuin.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,15 +14,17 @@ import android.widget.Toast;
 import com.example.abdullahkucuk.fruittuin.Constants.Intents;
 import com.example.abdullahkucuk.fruittuin.Helpers.NetworkHelper;
 import com.example.abdullahkucuk.fruittuin.Models.IntentModel;
+import com.example.abdullahkucuk.fruittuin.Models.UserModel;
 import com.example.abdullahkucuk.fruittuin.R;
 import com.example.abdullahkucuk.fruittuin.Services.Luis;
 
 public class IntroActivity extends AppCompatActivity {
     IntroActivity introActivity;
     TextView textViewWelkom;
-    String name;
+    //String name;
     Button buttonVolgende;
     EditText editText;
+    UserModel userModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +36,9 @@ public class IntroActivity extends AppCompatActivity {
         buttonVolgende = (Button)findViewById(R.id.button2);
         editText = (EditText) findViewById(R.id.editText);
 
-        name = getIntent().getStringExtra("name");
-        textViewWelkom.setText(textViewWelkom.getText().toString().replace("{name}", name));
+        userModel = getIntent().getParcelableExtra("user");
+        //name = getIntent().getStringExtra("name");
+        textViewWelkom.setText(textViewWelkom.getText().toString().replace("{name}", userModel.name));
 
         buttonVolgende.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,8 +84,11 @@ class IntroActivityTask extends AsyncTask<String, Void, IntentModel> {
         if(result != null){
             switch(result.getIntent()) {
                 case Intents.YES_INTENT:
-                    Toast.makeText(introActivity.getApplicationContext(), "TODO: VOLGEND SCHERM AANROEPEN",
-                            Toast.LENGTH_LONG).show();
+                    //UserModel userModel = introActivity.getIntent().getParcelableExtra("name");
+
+                    Intent intent = new Intent(introActivity, LeeftijdActivity.class);
+                    intent.putExtra("user", introActivity.userModel);
+                    introActivity.startActivity(intent);
                     break;
                 case Intents.NO_INTENT:
                     Toast.makeText(introActivity.getApplicationContext(), "Jammer! Dan kunnen we helaas niet samen op avontuur",
