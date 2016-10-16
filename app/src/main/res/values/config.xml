@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="LuisBaseUrl">https://api.projectoxford.ai/luis/v1/application</string>
+    <string name="LuisApplicationId">4190533a-28ce-4d0e-b270-e55733d200ed</string>
+    <string name="LuisSubscriptionKey">266c03fec3d248efbba6490695113dbf</string>
+</resources>
