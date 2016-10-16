@@ -74,7 +74,6 @@ public class Luis {
     }
 
     private String CreateUrl(String query) throws UnsupportedEncodingException {
-        //TODO: Read from strings file
         String baseUrl = context.getString(R.string.LuisBaseUrl);
         String applicationId = context.getString(R.string.LuisApplicationId);
         String subscriptionKey = context.getString(R.string.LuisSubscriptionKey);

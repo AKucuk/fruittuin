@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.abdullahkucuk.fruittuin.Helpers.UrlHelper;
 import com.example.abdullahkucuk.fruittuin.Models.UserModel;
 import com.example.abdullahkucuk.fruittuin.R;
+import com.example.abdullahkucuk.fruittuin.Services.WeatherHttpClient;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         button = (Button)findViewById(R.id.button);
         label = (TextView)findViewById(R.id.textView);
         editTextName = (EditText)findViewById(R.id.editTextName);
+
+        //new WeatherHttpClient(this).execute("Amsterdam");
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
