@@ -3,4 +3,13 @@
     <string name="introText">Ik zal mij even voorstellen. Ik ben Blije Bij. Ik ben hier in de Fruittuin om superhoning te maken.
 
     Maar daarvoor heb ik jouw hulp nodig. Wil jij met mij op avontuur?</string>
+    <string name="title_activity_main_drawer">MainDrawerActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
