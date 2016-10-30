@@ -5,14 +5,18 @@
     tools:context="com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <FrameLayout
+        android:id="@+id/fragment_frame_speurtocht"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="NaamFragment" />
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
 
     <Button
-        android:text="Ga naar BlankFragment"
-        android:layout_gravity="center"
+        android:text="Volgende"
+        android:layout_margin="10dp"
+        android:layout_gravity="bottom|right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button3" />
