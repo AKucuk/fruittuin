@@ -1,6 +1,5 @@
 package com.example.abdullahkucuk.fruittuin.Fragments.Subfragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -12,30 +11,22 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.abdullahkucuk.fruittuin.Activities.IntroActivity;
-import com.example.abdullahkucuk.fruittuin.Activities.MainActivity;
-import com.example.abdullahkucuk.fruittuin.Fragments.PlattegrondFragment;
+import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
 import com.example.abdullahkucuk.fruittuin.Models.UserModel;
 import com.example.abdullahkucuk.fruittuin.R;
-
-import com.example.abdullahkucuk.fruittuin.Helpers.UrlHelper;
-import com.example.abdullahkucuk.fruittuin.Models.UserModel;
-import com.example.abdullahkucuk.fruittuin.R;
-import com.example.abdullahkucuk.fruittuin.Services.WeatherHttpClient;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SpeurtochtPart1Fragment extends Fragment {
-
-    SpeurtochtPart1Fragment speurtochtPart1Fragment;
+public class PromptNameFragment extends Fragment {
+    PromptNameFragment promptNameFragment;
 
     Button button;
     TextView label;
     EditText editTextName;
     String name;
 
-    public SpeurtochtPart1Fragment() {
+    public PromptNameFragment() {
         // Required empty public constructor
     }
 
@@ -43,12 +34,11 @@ public class SpeurtochtPart1Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        speurtochtPart1Fragment = this;
+        promptNameFragment = this;
         super.onCreate(savedInstanceState);
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_speurtocht_part1, container, false);
+        View view = inflater.inflate(R.layout.fragment_prompt_name, container, false);
 
 
         button = (Button)view.findViewById(R.id.button);
@@ -60,7 +50,6 @@ public class SpeurtochtPart1Fragment extends Fragment {
             public void onClick(View view) {
                 name = editTextName.getText().toString();
                 if(name.isEmpty()) {
-
                     Toast.makeText(getActivity().getApplicationContext(), "Vul je naam in, zodat we verder kunnen...", Toast.LENGTH_LONG)
                             .show();
                     return;
@@ -72,13 +61,10 @@ public class SpeurtochtPart1Fragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("userModel", userModel);
 
-                // go to plattegrond
                 Fragment fragment = new SpeurtochtPart2Fragment();
                 fragment.setArguments(bundle);
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_frame_speurtocht, fragment); // fragmen container id in first parameter is the  container(Main layout id) of Activity
-                transaction.addToBackStack(null);  // this will manage backstack
-                transaction.commit();
+
+                FragmentHelper.addFragment(getFragmentManager(), fragment);
             }
         });
 

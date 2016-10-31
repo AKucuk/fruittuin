@@ -26,8 +26,6 @@ public class SpeurtochtPart2Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
 
         // Inflate the layout for this fragment
