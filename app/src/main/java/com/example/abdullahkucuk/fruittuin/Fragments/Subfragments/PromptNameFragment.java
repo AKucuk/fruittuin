@@ -61,7 +61,7 @@ public class PromptNameFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("userModel", userModel);
 
-                Fragment fragment = new SpeurtochtPart2Fragment();
+                Fragment fragment = new PromptAgeFragment();
                 fragment.setArguments(bundle);
 
                 FragmentHelper.addFragment(getFragmentManager(), fragment);
