@@ -1,4 +1,4 @@
-package com.example.abdullahkucuk.fruittuin.Fragments.Subfragments;
+package com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments;
 
 
 import android.os.Bundle;

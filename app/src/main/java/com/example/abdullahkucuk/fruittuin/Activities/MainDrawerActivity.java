@@ -12,8 +12,7 @@ import android.view.MenuItem;
 
 import com.example.abdullahkucuk.fruittuin.Fragments.FruittuinVanWestFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.PlattegrondFragment;
-import com.example.abdullahkucuk.fruittuin.Fragments.Subfragments.PromptNameFragment;
-import com.example.abdullahkucuk.fruittuin.Fragments.Subfragments.StartFragment;
+import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.StartFragment;
 import com.example.abdullahkucuk.fruittuin.R;
 
 public class MainDrawerActivity extends AppCompatActivity
@@ -79,7 +78,7 @@ public class MainDrawerActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_speurtocht) {
-            ft.beginTransaction().replace(R.id.fragment_frame, new PromptNameFragment()).commit();
+            ft.beginTransaction().replace(R.id.fragment_frame, new StartFragment()).commit();
 
         } else if (id == R.id.nav_fruittuin) {
             ft.beginTransaction().replace(R.id.fragment_frame, new FruittuinVanWestFragment()).commit();

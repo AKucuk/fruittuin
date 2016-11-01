@@ -1,4 +1,4 @@
-package com.example.abdullahkucuk.fruittuin.Fragments.Subfragments;
+package com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments;
 
 
 import android.content.Context;
@@ -11,7 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.abdullahkucuk.fruittuin.Fragments.BetweenFragment;
+import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
 import com.example.abdullahkucuk.fruittuin.Helpers.NetworkHelper;
+import com.example.abdullahkucuk.fruittuin.Models.UserModel;
 import com.example.abdullahkucuk.fruittuin.R;
 
 /**
@@ -21,6 +24,7 @@ public class PromptLocationFragment extends Fragment {
     View view;
     Button btnLocatie;
     EditText txtLocatie;
+    UserModel userModel;
 
     public PromptLocationFragment() {
         // Required empty public constructor
@@ -30,6 +34,12 @@ public class PromptLocationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            userModel = bundle.getParcelable("userModel");
+        }
+
         view = inflater.inflate(R.layout.fragment_prompt_location, container, false);
 
         btnLocatie = (Button) view.findViewById(R.id.btnLocatie);
@@ -51,6 +61,26 @@ public class PromptLocationFragment extends Fragment {
                             .show();
                     return;
                 }
+
+                String messageLocationReply = "Oooh daar heb ik weleens van gehoord. Welkom in Amsterdam.";
+
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("userModel", userModel);
+
+                Fragment fragment = new AcclimatizeFragment();
+                fragment.setArguments(bundle);
+
+                String page6Text= getResources().getString(R.string.page_6_text);
+
+                BetweenFragment betweenFragment2 = new BetweenFragment();
+                betweenFragment2.setFragment(fragment);
+                betweenFragment2.setMessage(page6Text);
+
+                BetweenFragment betweenFragment1 = new BetweenFragment();
+                betweenFragment1.setMessage(messageLocationReply);
+                betweenFragment1.setFragment(betweenFragment2);
+
+                FragmentHelper.addFragment(getFragmentManager(), betweenFragment1);
 
                 
             }

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.abdullahkucuk.fruittuin.Fragments.Subfragments.PromptLocationFragment">
+    tools:context="com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.PromptLocationFragment">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
