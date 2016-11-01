@@ -1,6 +1,7 @@
 package com.example.abdullahkucuk.fruittuin.Fragments.Subfragments;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,7 +10,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.abdullahkucuk.fruittuin.Fragments.BetweenFragment;
+import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
+import com.example.abdullahkucuk.fruittuin.Helpers.NetworkHelper;
 import com.example.abdullahkucuk.fruittuin.Models.UserModel;
 import com.example.abdullahkucuk.fruittuin.R;
 
@@ -42,9 +47,62 @@ public class PromptAgeFragment extends Fragment {
         }
 
         textViewPromptAge = (TextView)view.findViewById(R.id.textViewPromptAge);
-        btnPromptAge = (Button)view.findViewById(R.id.btnPromptAge);
-        editTextAge = (EditText)view.findViewById(R.id.editTextAge);
+        btnPromptAge = (Button)view.findViewById(R.id.btnLocatie);
+        editTextAge = (EditText)view.findViewById(R.id.txtLocatie);
         textViewPromptAge.setText(textViewPromptAge.getText().toString().replace("{name}", userModel.name));
+
+        btnPromptAge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = getContext();
+                if(!NetworkHelper.isOnline(context)) {
+                    Toast.makeText(context, R.string.no_internet_connection, Toast.LENGTH_LONG)
+                            .show();
+                    return;
+                }
+
+                String input = editTextAge.getText().toString();
+                if(input.isEmpty()) {
+                    Toast.makeText(context, "Vul je leeftijd in om verder te gaan...", Toast.LENGTH_LONG)
+                            .show();
+                    return;
+                }
+
+                int leeftijd;
+                try {
+                    leeftijd = Integer.parseInt(input);
+                    if (leeftijd <= 5) {
+                        Toast.makeText(context, leeftijd + "?!?! Dat kan helemaal niet!", Toast.LENGTH_LONG)
+                                .show();
+                        return;
+                    }
+                    else if(leeftijd > 80) {
+                        Toast.makeText(context, leeftijd + "??? Dat kan niet ouwe!", Toast.LENGTH_LONG)
+                                .show();
+                        return;
+                    }
+                }
+                catch (Exception exception) {
+                    Toast.makeText(context, "Vul een getal in!", Toast.LENGTH_LONG)
+                            .show();
+                    return;
+                }
+
+                userModel.leeftijd = leeftijd;
+
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("userModel", userModel);
+
+                Fragment fragment = new PromptLocationFragment();
+                fragment.setArguments(bundle);
+
+                BetweenFragment betweenFragment = new BetweenFragment();
+                betweenFragment.setFragment(fragment);
+                betweenFragment.setMessage("Wow, dat is oud zeg… Ik kan maar maximaal 2 maanden oud worden. Mijn koningin Isabella kan wel veel ouder worden dan ik; wel 5 jaar. Ze is zooo mooi… Ik ben een beetje verliefd op haar.");
+
+                FragmentHelper.addFragment(getFragmentManager(), betweenFragment);
+            }
+        });
 
         return view;
     }

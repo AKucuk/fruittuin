@@ -1,5 +1,6 @@
 package com.example.abdullahkucuk.fruittuin.Fragments.Subfragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
+import com.example.abdullahkucuk.fruittuin.Helpers.NetworkHelper;
 import com.example.abdullahkucuk.fruittuin.Models.UserModel;
 import com.example.abdullahkucuk.fruittuin.R;
 
@@ -48,6 +50,13 @@ public class PromptNameFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Context context = getContext();
+                if(!NetworkHelper.isOnline(context)) {
+                    Toast.makeText(context, R.string.no_internet_connection, Toast.LENGTH_LONG)
+                            .show();
+                    return;
+                }
+
                 name = editTextName.getText().toString();
                 if(name.isEmpty()) {
                     Toast.makeText(getActivity().getApplicationContext(), "Vul je naam in, zodat we verder kunnen...", Toast.LENGTH_LONG)

@@ -3,27 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.abdullahkucuk.fruittuin.Fragments.Subfragments.PromptAgeFragment">
+    tools:context="com.example.abdullahkucuk.fruittuin.Fragments.Subfragments.PromptLocationFragment">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
-            android:layout_width="325dp"
-            android:layout_height="235dp"
+            android:layout_width="321dp"
+            android:layout_height="293dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Wat een mooie naam heb je, {name}!\n\nIk vind het erg leuk om kennis met je te maken. Mijn naam is Billy de Bij. Ik ben al twee en halve week oud.\n\nHoe oud ben jij eigenlijk?"
+            android:text="En waar kom je vandaan?"
             android:id="@+id/textViewPromptAge"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintRight_toRightOf="parent"
             android:layout_marginStart="16dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintVertical_bias="0.17000002"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintVertical_bias="0.22000003" />
 
         <Button
             android:layout_width="121dp"
@@ -32,10 +32,16 @@
             android:id="@+id/btnLocatie"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textViewPromptAge"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="16dp"
-            app:layout_constraintVertical_bias="1.0" />
+            android:layout_marginEnd="16dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toRightOf="@+id/txtLocatie"
+            app:layout_constraintHorizontal_bias="0.69"
+            app:layout_constraintVertical_bias="0.92" />
 
         <EditText
             android:layout_width="204dp"
@@ -44,14 +50,18 @@
             android:ems="10"
             android:id="@+id/txtLocatie"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginStart="16dp"
             app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textViewPromptAge"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="16dp"
-            app:layout_constraintVertical_bias="1.0"
-            app:layout_constraintRight_toLeftOf="@+id/btnLocatie"
-            android:layout_marginEnd="8dp" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.95" />
 
     </android.support.constraint.ConstraintLayout>
+
 
 </FrameLayout>
