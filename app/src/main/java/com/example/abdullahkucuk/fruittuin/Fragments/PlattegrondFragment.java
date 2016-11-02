@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.abdullahkucuk.fruittuin.R;
+
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,12 +18,12 @@ import com.example.abdullahkucuk.fruittuin.R;
 public class PlattegrondFragment extends Fragment {
 
     View view;
+    ImageView imageView;
 
 
     public PlattegrondFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,26 +31,9 @@ public class PlattegrondFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_plattegrond, container, false);
 
-
-        view.setOnClickListener(new View.OnClickListener() {
-            float zoomFactor = 2f;
-            boolean zoomedOut = false;
-
-            @Override
-            public void onClick(View v) {
-                if(zoomedOut) {
-                    v.setScaleX(1);
-                    v.setScaleY(1);
-                    zoomedOut = false;
-                }
-                else {
-                    v.setScaleX(zoomFactor);
-                    v.setScaleY(zoomFactor);
-                    zoomedOut = true;
-                }
-            }
-        });
-
+        imageView = (ImageView) view.findViewById(R.id.imgPlattegrond);
+        PhotoViewAttacher photoView = new PhotoViewAttacher(imageView);
+        photoView.update();
 
         return view;
     }

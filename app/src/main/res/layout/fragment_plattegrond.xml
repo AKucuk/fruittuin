@@ -6,10 +6,10 @@
     tools:context="com.example.abdullahkucuk.fruittuin.Fragments.PlattegrondFragment">
 
     <ImageView
+        android:id="@+id/imgPlattegrond"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        app:srcCompat="@drawable/plattegrondresized"
-        android:id="@+id/imageView5" />
+        app:srcCompat="@drawable/plattegrondresized" />
 
 </FrameLayout>

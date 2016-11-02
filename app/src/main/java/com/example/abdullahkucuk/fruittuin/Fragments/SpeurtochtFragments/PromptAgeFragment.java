@@ -98,7 +98,7 @@ public class PromptAgeFragment extends Fragment {
 
                 BetweenFragment betweenFragment = new BetweenFragment();
                 betweenFragment.setFragment(fragment);
-                betweenFragment.setMessage("Wow, dat is oud zeg… Ik kan maar maximaal 2 maanden oud worden. Mijn koningin Isabella kan wel veel ouder worden dan ik; wel 5 jaar. Ze is zooo mooi… Ik ben een beetje verliefd op haar.");
+                betweenFragment.setMessage(getResources().getString(R.string.page_4_text));
 
                 FragmentHelper.addFragment(getFragmentManager(), betweenFragment);
             }
