@@ -14,6 +14,8 @@ import com.example.abdullahkucuk.fruittuin.R;
  */
 public class PlattegrondFragment extends Fragment {
 
+    View view;
+
 
     public PlattegrondFragment() {
         // Required empty public constructor
@@ -24,7 +26,30 @@ public class PlattegrondFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_plattegrond, container, false);
+        view = inflater.inflate(R.layout.fragment_plattegrond, container, false);
+
+
+        view.setOnClickListener(new View.OnClickListener() {
+            float zoomFactor = 2f;
+            boolean zoomedOut = false;
+
+            @Override
+            public void onClick(View v) {
+                if(zoomedOut) {
+                    v.setScaleX(1);
+                    v.setScaleY(1);
+                    zoomedOut = false;
+                }
+                else {
+                    v.setScaleX(zoomFactor);
+                    v.setScaleY(zoomFactor);
+                    zoomedOut = true;
+                }
+            }
+        });
+
+
+        return view;
     }
 
 }

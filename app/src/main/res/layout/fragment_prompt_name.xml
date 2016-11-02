@@ -37,7 +37,9 @@
             app:layout_constraintRight_toLeftOf="@+id/button"
             android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp" />
 
         <TextView
             android:layout_width="328dp"
@@ -51,13 +53,16 @@
             android:layout_marginStart="16dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/editTextName"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginBottom="32dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            app:layout_constraintHorizontal_bias="0.55" />
 
         <ImageView
             android:layout_width="247dp"
             android:layout_height="231dp"
             android:id="@+id/imageView"
-            android:src="@drawable/bee"
+            android:src="@drawable/bee_fragment_prompt_name"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
             android:layout_marginTop="32dp"
@@ -67,7 +72,9 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/textView3"
             android:layout_marginBottom="8dp"
-            app:layout_constraintHorizontal_bias="0.08" />
+            app:layout_constraintHorizontal_bias="0.94"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp" />
 
     </android.support.constraint.ConstraintLayout>
 
