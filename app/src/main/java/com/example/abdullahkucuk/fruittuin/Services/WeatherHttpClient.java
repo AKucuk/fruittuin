@@ -3,8 +3,10 @@ package com.example.abdullahkucuk.fruittuin.Services;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.abdullahkucuk.fruittuin.Activities.MainActivity;
+import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.PromptTemperatureFragment;
 import com.example.abdullahkucuk.fruittuin.R;
 
 import org.json.JSONException;
@@ -23,10 +25,10 @@ import java.net.URL;
 public class WeatherHttpClient extends AsyncTask<String, Void, Float> {
     private static String BASE_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
 
-    MainActivity mainActivity;
+    PromptTemperatureFragment promptTemperatureFragment;
 
-    public WeatherHttpClient(MainActivity mainActivity) {
-        this.mainActivity = mainActivity;
+    public WeatherHttpClient(PromptTemperatureFragment promptTemperatureFragment) {
+        this.promptTemperatureFragment = promptTemperatureFragment;
     }
 
     public float getTemperature(String location) {
@@ -53,7 +55,7 @@ public class WeatherHttpClient extends AsyncTask<String, Void, Float> {
         InputStream is = null;
 
         try {
-            Context context = mainActivity.getApplicationContext();
+            Context context = promptTemperatureFragment.getContext();
             String appId = context.getString(R.string.OpenWeatherAppId);
             con = (HttpURLConnection) ( new URL(BASE_URL + location + "&appid=" + appId)).openConnection();
             con.setRequestMethod("GET");
@@ -93,7 +95,23 @@ public class WeatherHttpClient extends AsyncTask<String, Void, Float> {
 
     @Override
     protected void onPostExecute(Float f) {
-        TextView label = (TextView)mainActivity.findViewById(R.id.textView);
-        label.setText(f.toString());
+        Context context = promptTemperatureFragment.getContext();
+        int currentTemperatuur = Math.round(f);
+        int guessedTemperatuur = Math.round(promptTemperatureFragment.guessedTemperatuur);
+
+        if(guessedTemperatuur < currentTemperatuur) {
+            Toast.makeText(context, guessedTemperatuur + "?? Het is toch niet zo koud...", Toast.LENGTH_LONG)
+                    .show();
+            return;
+        }
+        else if(guessedTemperatuur > currentTemperatuur) {
+            Toast.makeText(context, guessedTemperatuur + "?? Het is toch niet zo warm?", Toast.LENGTH_LONG)
+                    .show();
+            return;
+        }
+        else {
+            Toast.makeText(context, "goed", Toast.LENGTH_LONG)
+                    .show();
+        }
     }
 }

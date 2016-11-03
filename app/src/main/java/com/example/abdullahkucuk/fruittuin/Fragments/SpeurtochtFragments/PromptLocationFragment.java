@@ -42,8 +42,8 @@ public class PromptLocationFragment extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_prompt_location, container, false);
 
-        btnLocatie = (Button) view.findViewById(R.id.btnLocatie);
-        txtLocatie = (EditText) view.findViewById(R.id.txtLocatie);
+        btnLocatie = (Button) view.findViewById(R.id.btnTemperatuur);
+        txtLocatie = (EditText) view.findViewById(R.id.txtTemperatuur);
 
         btnLocatie.setOnClickListener(new View.OnClickListener() {
             @Override

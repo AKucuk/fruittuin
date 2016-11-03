@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.abdullahkucuk.fruittuin.Helpers.NetworkHelper;
@@ -24,8 +23,8 @@ public class LocatieActivity extends AppCompatActivity {
         setContentView(R.layout.activity_locatie);
 
         userModel = getIntent().getParcelableExtra("user");
-        btnLocatie = (Button) findViewById(R.id.btnLocatie);
-        txtLocatie = (EditText) findViewById(R.id.txtLocatie);
+        btnLocatie = (Button) findViewById(R.id.btnTemperatuur);
+        txtLocatie = (EditText) findViewById(R.id.txtTemperatuur);
 
         btnLocatie.setOnClickListener(new View.OnClickListener() {
             @Override

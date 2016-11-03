@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
 import com.example.abdullahkucuk.fruittuin.R;
 
 /**
@@ -35,20 +36,24 @@ public class AcclimatizeFragment extends Fragment {
 
         txtTimer = (TextView)view.findViewById(R.id.txtTimer);
         btnAcclimatize = (Button) view.findViewById(R.id.btnAcclimatize);
+        btnAcclimatize.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentHelper.addFragment(getFragmentManager(), new PromptTemperatureFragment());
+            }
+        });
 
-        new CountDownTimer(30000, 1000)
+        new CountDownTimer(3000, 1000)
         {
             public void onTick(long millisUntilFinished) {
-                txtTimer.setText("Seconds remaining: " + millisUntilFinished / 1000);
+                txtTimer.setText("" + millisUntilFinished / 1000);
             }
 
             public void onFinish() {
-                txtTimer.setText("Done");
+                txtTimer.setText("");
                 btnAcclimatize.setVisibility(View.VISIBLE);
             }
         }.start();
-
-
 
 
         return view;
