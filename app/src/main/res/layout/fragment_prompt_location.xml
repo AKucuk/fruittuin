@@ -28,7 +28,7 @@
             app:layout_constraintVertical_bias="0.22000003" />
 
         <Button
-            android:id="@+id/btnLocatie"
+            android:id="@+id/btnTemperatuur"
             android:layout_width="121dp"
             android:layout_height="65dp"
             android:layout_alignParentBottom="true"
@@ -42,13 +42,13 @@
             android:text="Volgende"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.69"
-            app:layout_constraintLeft_toRightOf="@+id/txtLocatie"
+            app:layout_constraintLeft_toRightOf="@+id/txtTemperatuur"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewPromptAge"
             app:layout_constraintVertical_bias="0.92" />
 
         <EditText
-            android:id="@+id/txtLocatie"
+            android:id="@+id/txtTemperatuur"
             android:layout_width="204dp"
             android:layout_height="65dp"
             android:layout_alignParentStart="true"
@@ -61,7 +61,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/btnLocatie"
+            app:layout_constraintRight_toLeftOf="@+id/btnTemperatuur"
             app:layout_constraintTop_toBottomOf="@+id/textViewPromptAge"
             app:layout_constraintVertical_bias="0.95" />
 
