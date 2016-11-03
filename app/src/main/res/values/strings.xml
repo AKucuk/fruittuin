@@ -2,14 +2,27 @@
     <string name="app_name">Fruittuin</string>
     <string name="no_internet_connection">Geen internet connectie!</string>
     <string name="introText">Ik zal mij even voorstellen. Ik ben Blije Bij. Ik ben hier in de Fruittuin om superhoning te maken. Maar daarvoor heb ik jouw hulp nodig. Wil jij met mij op avontuur?</string>
-    <string name="page_4_text">Wow, dat is oud zeg…\n\nIk kan maar maximaal 2 maanden oud worden. Mijn koningin Isabella kan wel veel ouder worden dan ik; wel 5 jaar.\n\nZe is zooo mooi… Ik ben een beetje verliefd op haar.</string>
+    <string name="page_4_text">Wow, dat is oud zeg…Ik kan maar maximaal 2 maanden oud worden.\n\nMijn koningin Isabella kan wel veel ouder worden dan ik; wel 5 jaar.\n\nZe is zo mooi… Ik ben een beetje verliefd op haar.</string>
     <string name="title_activity_main_drawer">MainDrawerActivity</string>
-    <string name="page_6_text">Ik wil graag heerlijke honing maken om Isabella mee te imponeren. Isabella is namelijk dol op honing. :) :) Nu heb ik van mijn kameraad Zzzaza de Wesp gehoord dat de fruittuin een uitstekende plek is om honing te maken. Hij vertelde mij dat het net een paradijs is. Ik vertrouw het echter niet helemaal, het lijkt te mooi om waar te zijn. En daarnaast is Zzzaza nogal een praatjesmaker. Daarom moet jij voor mij op onderzoek uitgaan, om te onderzoeken of de verhalen van Zzzaza wel kloppen.</string>
+    <string name="page_6_text">Ik wil graag heerlijke honing maken om Isabella mee te imponeren. Isabella is namelijk dol op honing.\n\n Nu heb ik van mijn kameraad Willie de Wesp gehoord dat de fruittuin een uitstekende plek is om honing te maken. Hij vertelde mij dat het net een paradijs is.\n\nIk vertrouw het echter niet helemaal, het lijkt te mooi om waar te zijn. En daarnaast is Willie nogal een praatjesmaker.\n\nDaarom moet jij voor mij op onderzoek uitgaan, om te onderzoeken of de verhalen van Willie wel kloppen.</string>
+
+    <string name="acclimatize_text">Oké, laten we beginnen, hier is je eerste opdracht:\n\nLoop 3 minuten even rond en inventariseer wat er allemaal is. Kijk naar de lucht en geniet van de natuur.</string>
+
 
     <string name="navigation_drawer_open">Open menu</string>
     <string name="navigation_drawer_close">Sluit menu</string>
 
     <string name="action_settings">Instellingen</string>
+
+    <string name="image_details_header">Details:</string>
+    <string name="image_preview_header">Preview:</string>
+    <string name="loading_message">Uploading image. Please wait.</string>
+
+    <string name="dialog_select_prompt">Choose a picture</string>
+    <string name="dialog_select_camera">Camera</string>
+    <string name="dialog_select_gallery">Gallery</string>
+
+    <string name="image_picker_error">Something is wrong with that image. Pick a different one please.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

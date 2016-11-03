@@ -20,6 +20,7 @@ import com.example.abdullahkucuk.fruittuin.R;
 public class AcclimatizeFragment extends Fragment {
 
     View view;
+    TextView txtAcclimatize;
     TextView txtTimer;
     Button btnAcclimatize;
 
@@ -35,6 +36,9 @@ public class AcclimatizeFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_acclimatize, container, false);
 
         txtTimer = (TextView)view.findViewById(R.id.txtTimer);
+        txtAcclimatize = (TextView) view.findViewById(R.id.textAcclimatize);
+        txtAcclimatize.setText(getResources().getString(R.string.acclimatize_text));
+
         btnAcclimatize = (Button) view.findViewById(R.id.btnAcclimatize);
         btnAcclimatize.setOnClickListener(new View.OnClickListener() {
             @Override

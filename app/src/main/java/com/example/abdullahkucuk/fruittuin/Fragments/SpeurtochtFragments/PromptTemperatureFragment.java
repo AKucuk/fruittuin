@@ -20,11 +20,11 @@ import com.example.abdullahkucuk.fruittuin.Services.WeatherHttpClient;
  * A simple {@link Fragment} subclass.
  */
 public class PromptTemperatureFragment extends Fragment {
+    public float guessedTemperatuur;
     View view;
     Button btnTemperatuur;
     EditText txtTemperatuur;
     PromptTemperatureFragment promptTemperatureFragment;
-    public float guessedTemperatuur;
 
     public PromptTemperatureFragment() {
         // Required empty public constructor
@@ -44,14 +44,14 @@ public class PromptTemperatureFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Context context = getContext();
-                if(!NetworkHelper.isOnline(context)) {
+                if (!NetworkHelper.isOnline(context)) {
                     Toast.makeText(context, R.string.no_internet_connection, Toast.LENGTH_LONG)
                             .show();
                     return;
                 }
 
                 String input = txtTemperatuur.getText().toString();
-                if(input.isEmpty()) {
+                if (input.isEmpty()) {
                     Toast.makeText(context, "Vul de temperatuur in...", Toast.LENGTH_LONG)
                             .show();
                     return;
@@ -64,14 +64,12 @@ public class PromptTemperatureFragment extends Fragment {
                         Toast.makeText(context, temperatuur + "?!?! Dat kan helemaal niet!", Toast.LENGTH_LONG)
                                 .show();
                         return;
-                    }
-                    else if(temperatuur < -40) {
+                    } else if (temperatuur < -40) {
                         Toast.makeText(context, temperatuur + "??? Dat kan niet kouwe!", Toast.LENGTH_LONG)
                                 .show();
                         return;
                     }
-                }
-                catch (Exception exception) {
+                } catch (Exception exception) {
                     Toast.makeText(context, "Vul een getal in!", Toast.LENGTH_LONG)
                             .show();
                     return;

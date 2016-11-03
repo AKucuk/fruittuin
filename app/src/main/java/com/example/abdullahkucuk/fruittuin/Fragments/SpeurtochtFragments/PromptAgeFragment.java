@@ -47,8 +47,8 @@ public class PromptAgeFragment extends Fragment {
         }
 
         textViewPromptAge = (TextView)view.findViewById(R.id.textViewPromptAge);
-        btnPromptAge = (Button)view.findViewById(R.id.btnTemperatuur);
-        editTextAge = (EditText)view.findViewById(R.id.txtTemperatuur);
+        btnPromptAge = (Button) view.findViewById(R.id.btnTemperatuur);
+        editTextAge = (EditText) view.findViewById(R.id.txtTemperatuur);
         textViewPromptAge.setText(textViewPromptAge.getText().toString().replace("{name}", userModel.name));
 
         btnPromptAge.setOnClickListener(new View.OnClickListener() {

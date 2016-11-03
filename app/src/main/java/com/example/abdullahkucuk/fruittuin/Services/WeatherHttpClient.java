@@ -31,6 +31,15 @@ public class WeatherHttpClient extends AsyncTask<String, Void, Float> {
         this.promptTemperatureFragment = promptTemperatureFragment;
     }
 
+    private static float getFloat(String tagName, JSONObject jObj) throws JSONException {
+        return (float) jObj.getDouble(tagName);
+    }
+
+    private static JSONObject getObject(String tagName, JSONObject jObj) throws JSONException {
+        JSONObject subObj = jObj.getJSONObject(tagName);
+        return subObj;
+    }
+
     public float getTemperature(String location) {
         String data = getWeatherData(location);
         try {
@@ -43,13 +52,7 @@ public class WeatherHttpClient extends AsyncTask<String, Void, Float> {
         }
         return 0;
     }
-    private static float getFloat(String tagName, JSONObject jObj) throws JSONException {
-        return (float) jObj.getDouble(tagName);
-    }
-    private static JSONObject getObject(String tagName, JSONObject jObj) throws JSONException {
-        JSONObject subObj = jObj.getJSONObject(tagName);
-        return subObj;
-    }
+
     private String getWeatherData(String location) {
         HttpURLConnection con = null ;
         InputStream is = null;
@@ -99,17 +102,15 @@ public class WeatherHttpClient extends AsyncTask<String, Void, Float> {
         int currentTemperatuur = Math.round(f);
         int guessedTemperatuur = Math.round(promptTemperatureFragment.guessedTemperatuur);
 
-        if(guessedTemperatuur < currentTemperatuur) {
+        if (guessedTemperatuur < currentTemperatuur) {
             Toast.makeText(context, guessedTemperatuur + "?? Het is toch niet zo koud...", Toast.LENGTH_LONG)
                     .show();
             return;
-        }
-        else if(guessedTemperatuur > currentTemperatuur) {
+        } else if (guessedTemperatuur > currentTemperatuur) {
             Toast.makeText(context, guessedTemperatuur + "?? Het is toch niet zo warm?", Toast.LENGTH_LONG)
                     .show();
             return;
-        }
-        else {
+        } else {
             Toast.makeText(context, "goed", Toast.LENGTH_LONG)
                     .show();
         }
