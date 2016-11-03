@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, IntroActivity.class);
                 intent.putExtra("user", userModel);
                 startActivity(intent);
-
             }
         });
     }

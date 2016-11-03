@@ -10,11 +10,50 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="289dp"
+            android:layout_height="204dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="50dp"
+            android:text="Hey psssst... jij daar...\n\nIk zie dat je op bezoek bent in de Fruittuin. Heb jij zin om met mij op avontuur te gaan?"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.47"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.65999997" />
+
+        <EditText
+            android:id="@+id/textStartSpeurtocht"
+            android:layout_width="204dp"
+            android:layout_height="55dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/buttonVolgende"
+            app:layout_constraintTop_toBottomOf="@+id/textView11"
+            app:layout_constraintVertical_bias="1.0" />
+
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="124dp"
+            android:layout_width="125dp"
 
-            android:layout_height="213dp"
+            android:layout_height="182dp"
             android:layout_marginBottom="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginLeft="16dp"
@@ -26,49 +65,29 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.060000002"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/bee_fragment_start" />
 
         <Button
-            android:id="@+id/btnStartSpeurtocht"
+            android:id="@+id/buttonVolgende"
             android:layout_width="121dp"
             android:layout_height="65dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_marginBottom="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="Start"
+            android:text="Verzenden"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView11"
             app:layout_constraintVertical_bias="1.0" />
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="315dp"
-            android:layout_height="206dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="216dp"
-            android:text="Hey psssst… jij daar…\n\nIk zie dat je op bezoek bent in de Fruittuin. Heb jij zin om met mij op avontuur te gaan?\n\nKlik maar op start ;)"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-
 
     </android.support.constraint.ConstraintLayout>
 
