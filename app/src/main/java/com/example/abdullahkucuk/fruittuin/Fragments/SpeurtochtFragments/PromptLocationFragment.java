@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.abdullahkucuk.fruittuin.Fragments.BetweenFragment;
 import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
+import com.example.abdullahkucuk.fruittuin.Helpers.KeyboardHelper;
 import com.example.abdullahkucuk.fruittuin.Helpers.NetworkHelper;
 import com.example.abdullahkucuk.fruittuin.Models.UserModel;
 import com.example.abdullahkucuk.fruittuin.R;
@@ -41,6 +42,8 @@ public class PromptLocationFragment extends Fragment {
         }
 
         view = inflater.inflate(R.layout.fragment_prompt_location, container, false);
+
+        KeyboardHelper.hideKeyboard(getActivity());
 
         btnLocatie = (Button) view.findViewById(R.id.btnTemperatuur);
         txtLocatie = (EditText) view.findViewById(R.id.txtTemperatuur);

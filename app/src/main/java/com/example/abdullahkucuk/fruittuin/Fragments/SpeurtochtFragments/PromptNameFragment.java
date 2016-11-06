@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
+import com.example.abdullahkucuk.fruittuin.Helpers.KeyboardHelper;
 import com.example.abdullahkucuk.fruittuin.Helpers.NetworkHelper;
 import com.example.abdullahkucuk.fruittuin.Models.UserModel;
 import com.example.abdullahkucuk.fruittuin.R;
@@ -41,10 +42,11 @@ public class PromptNameFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_prompt_name, container, false);
 
-
         button = (Button)view.findViewById(R.id.button);
         label = (TextView)view.findViewById(R.id.textView);
         editTextName = (EditText)view.findViewById(R.id.editTextName);
+
+        KeyboardHelper.hideKeyboard(getActivity());
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

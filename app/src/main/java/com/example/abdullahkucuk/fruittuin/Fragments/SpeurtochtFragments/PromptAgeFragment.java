@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.abdullahkucuk.fruittuin.Fragments.BetweenFragment;
 import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
+import com.example.abdullahkucuk.fruittuin.Helpers.KeyboardHelper;
 import com.example.abdullahkucuk.fruittuin.Helpers.NetworkHelper;
 import com.example.abdullahkucuk.fruittuin.Models.UserModel;
 import com.example.abdullahkucuk.fruittuin.R;
@@ -50,6 +51,8 @@ public class PromptAgeFragment extends Fragment {
         btnPromptAge = (Button) view.findViewById(R.id.btnTemperatuur);
         editTextAge = (EditText) view.findViewById(R.id.txtTemperatuur);
         textViewPromptAge.setText(textViewPromptAge.getText().toString().replace("{name}", userModel.name));
+
+        KeyboardHelper.hideKeyboard(getActivity());
 
         btnPromptAge.setOnClickListener(new View.OnClickListener() {
             @Override

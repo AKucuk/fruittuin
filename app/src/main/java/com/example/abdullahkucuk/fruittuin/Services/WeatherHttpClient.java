@@ -2,10 +2,8 @@ package com.example.abdullahkucuk.fruittuin.Services;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.abdullahkucuk.fruittuin.Activities.MainActivity;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.PromptTemperatureFragment;
 import com.example.abdullahkucuk.fruittuin.R;
 

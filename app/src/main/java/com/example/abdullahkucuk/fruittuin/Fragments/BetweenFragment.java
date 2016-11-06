@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
+import com.example.abdullahkucuk.fruittuin.Helpers.KeyboardHelper;
 import com.example.abdullahkucuk.fruittuin.R;
 
 /**
@@ -42,6 +43,8 @@ public class BetweenFragment extends Fragment {
         btnVolgende = (Button)view.findViewById(R.id.btnVolgende);
         txtInfo = (TextView)view.findViewById(R.id.txtInfo);
         txtInfo.setText(message);
+
+        KeyboardHelper.hideKeyboard(getActivity());
 
         btnVolgende.setOnClickListener(new View.OnClickListener() {
             @Override
