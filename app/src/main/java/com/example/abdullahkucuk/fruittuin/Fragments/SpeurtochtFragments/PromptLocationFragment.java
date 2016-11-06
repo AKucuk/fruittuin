@@ -68,7 +68,7 @@ public class PromptLocationFragment extends Fragment {
                     return;
                 }
 
-                new LocationTask(promptLocationFragment).execute("Rotterdam");
+                new LocationTask(promptLocationFragment).execute(locatie);
             }
         });
 
