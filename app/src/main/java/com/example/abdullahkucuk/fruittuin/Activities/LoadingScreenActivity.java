@@ -30,7 +30,7 @@ public class LoadingScreenActivity extends Activity {
                 }catch(InterruptedException e){
                     e.printStackTrace();
                 }finally{
-                    Intent intent = new Intent(LoadingScreenActivity.this,MainDrawerActivity.class);
+                    Intent intent = new Intent(LoadingScreenActivity.this,MainActivity.class);
                     startActivity(intent);
                 }
             }
