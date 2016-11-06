@@ -17,6 +17,7 @@ import com.example.abdullahkucuk.fruittuin.Helpers.KeyboardHelper;
 import com.example.abdullahkucuk.fruittuin.Helpers.NetworkHelper;
 import com.example.abdullahkucuk.fruittuin.Models.UserModel;
 import com.example.abdullahkucuk.fruittuin.R;
+import com.example.abdullahkucuk.fruittuin.Tasks.LocationTask;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +27,7 @@ public class PromptLocationFragment extends Fragment {
     Button btnLocatie;
     EditText txtLocatie;
     UserModel userModel;
+    PromptLocationFragment promptLocationFragment;
 
     public PromptLocationFragment() {
         // Required empty public constructor
@@ -41,6 +43,7 @@ public class PromptLocationFragment extends Fragment {
             userModel = bundle.getParcelable("userModel");
         }
 
+        promptLocationFragment = this;
         view = inflater.inflate(R.layout.fragment_prompt_location, container, false);
 
         KeyboardHelper.hideKeyboard(getActivity());
@@ -65,31 +68,14 @@ public class PromptLocationFragment extends Fragment {
                     return;
                 }
 
-                String messageLocationReply = "Oooh daar heb ik weleens van gehoord. Welkom in Amsterdam.";
-
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("userModel", userModel);
-
-                Fragment fragment = new AcclimatizeFragment();
-                fragment.setArguments(bundle);
-
-                String page6Text= getResources().getString(R.string.page_6_text);
-
-                BetweenFragment betweenFragment2 = new BetweenFragment();
-                betweenFragment2.setFragment(fragment);
-                betweenFragment2.setMessage(page6Text);
-
-                BetweenFragment betweenFragment1 = new BetweenFragment();
-                betweenFragment1.setMessage(messageLocationReply);
-                betweenFragment1.setFragment(betweenFragment2);
-
-                FragmentHelper.addFragment(getFragmentManager(), betweenFragment1);
-
-                
+                new LocationTask(promptLocationFragment).execute("Rotterdam");
             }
         });
 
         return view;
     }
 
+    public UserModel getUserModel() {
+        return userModel;
+    }
 }
