@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
+import com.example.abdullahkucuk.fruittuin.Helpers.TimeHelper;
 import com.example.abdullahkucuk.fruittuin.R;
 
 /**
@@ -47,10 +48,10 @@ public class AcclimatizeFragment extends Fragment {
             }
         });
 
-        new CountDownTimer(3000, 1000)
+        new CountDownTimer(180000, 1000)
         {
             public void onTick(long millisUntilFinished) {
-                txtTimer.setText("" + millisUntilFinished / 1000);
+                txtTimer.setText(TimeHelper.getTimeFormatByMilliseconds(millisUntilFinished));
             }
 
             public void onFinish() {
