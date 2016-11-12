@@ -17,6 +17,7 @@ import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
 import com.example.abdullahkucuk.fruittuin.Helpers.NetworkHelper;
 import com.example.abdullahkucuk.fruittuin.Models.IntentModel;
 import com.example.abdullahkucuk.fruittuin.R;
+import com.example.abdullahkucuk.fruittuin.Services.GoogleDistanceMatrix;
 import com.example.abdullahkucuk.fruittuin.Services.Luis;
 
 /**
@@ -69,6 +70,7 @@ public class StartFragment extends Fragment {
                     return;
                 }
 
+
                 new StartFragmentTask(startFragment).execute(input);
             }
         });
@@ -112,7 +114,7 @@ public class StartFragment extends Fragment {
                                 Toast.LENGTH_LONG).show();
                         break;
                     default:
-                        Toast.makeText(startFragment.getActivity().getApplicationContext(), "Ik heb je helaas niet verstaan. Formuleer je zin iets anders.",
+                        Toast.makeText(startFragment.getActivity().getApplicationContext(), "Ik heb je helaas niet verstaan. Typ je zin iets anders.",
                                 Toast.LENGTH_LONG).show();
                         break;
                 }
