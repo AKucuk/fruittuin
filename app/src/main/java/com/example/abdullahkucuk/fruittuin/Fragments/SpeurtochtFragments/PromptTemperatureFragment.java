@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.example.abdullahkucuk.fruittuin.Helpers.NetworkHelper;
 import com.example.abdullahkucuk.fruittuin.R;
-import com.example.abdullahkucuk.fruittuin.Services.WeatherHttpClient;
+import com.example.abdullahkucuk.fruittuin.Tasks.WeatherTask;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -77,7 +77,7 @@ public class PromptTemperatureFragment extends Fragment {
 
                 guessedTemperatuur = temperatuur;
 
-                new WeatherHttpClient(promptTemperatureFragment).execute("Amsterdam");
+                new WeatherTask(promptTemperatureFragment).execute("Amsterdam");
             }
         });
 
