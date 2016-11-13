@@ -1,109 +1,118 @@
+package com.example.abdullahkucuk.fruittuin.Fragments;
 
-/*
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+
+import android.Manifest;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.abdullahkucuk.fruittuin.R;
+import com.example.abdullahkucuk.fruittuin.Services.PermissionUtils;
+import com.google.api.client.extensions.android.http.AndroidHttp;
+import com.google.api.client.googleapis.json.GoogleJsonResponseException;
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.gson.GsonFactory;
+import com.google.api.services.vision.v1.Vision;
+import com.google.api.services.vision.v1.VisionRequestInitializer;
+import com.google.api.services.vision.v1.model.AnnotateImageRequest;
+import com.google.api.services.vision.v1.model.BatchAnnotateImagesRequest;
+import com.google.api.services.vision.v1.model.BatchAnnotateImagesResponse;
+import com.google.api.services.vision.v1.model.EntityAnnotation;
+import com.google.api.services.vision.v1.model.Feature;
+import com.google.api.services.vision.v1.model.Image;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static android.app.Activity.RESULT_OK;
+
+/**
+ * A simple {@link Fragment} subclass.
  */
+public class PictureFragment extends Fragment {
 
-package com.example.abdullahkucuk.fruittuin.Services;
-
-        import android.Manifest;
-        import android.content.DialogInterface;
-        import android.content.Intent;
-        import android.graphics.Bitmap;
-        import android.net.Uri;
-        import android.os.AsyncTask;
-        import android.os.Bundle;
-        import android.os.Environment;
-        import android.provider.MediaStore;
-        import android.support.design.widget.FloatingActionButton;
-        import android.support.v7.app.AlertDialog;
-        import android.support.v7.app.AppCompatActivity;
-        import android.support.v7.widget.Toolbar;
-        import android.util.Log;
-        import android.view.View;
-        import android.widget.ImageView;
-        import android.widget.TextView;
-        import android.widget.Toast;
-
-        import com.example.abdullahkucuk.fruittuin.R;
-        import com.google.api.client.extensions.android.http.AndroidHttp;
-        import com.google.api.client.googleapis.json.GoogleJsonResponseException;
-        import com.google.api.client.http.HttpTransport;
-        import com.google.api.client.json.JsonFactory;
-        import com.google.api.client.json.gson.GsonFactory;
-        import com.google.api.services.vision.v1.Vision;
-        import com.google.api.services.vision.v1.VisionRequestInitializer;
-        import com.google.api.services.vision.v1.model.AnnotateImageRequest;
-        import com.google.api.services.vision.v1.model.BatchAnnotateImagesRequest;
-        import com.google.api.services.vision.v1.model.BatchAnnotateImagesResponse;
-        import com.google.api.services.vision.v1.model.EntityAnnotation;
-        import com.google.api.services.vision.v1.model.Feature;
-        import com.google.api.services.vision.v1.model.Image;
-
-        import java.io.ByteArrayOutputStream;
-        import java.io.File;
-        import java.io.IOException;
-        import java.util.ArrayList;
-        import java.util.List;
-
-        import static android.app.Activity.RESULT_OK;
-
-public class GoogleVision extends AppCompatActivity {
-    private static final String CLOUD_VISION_API_KEY = "AIzaSyDkpf0HtAi9HSpsxC_tIOId5Mc3O2SBDPE";
     public static final String FILE_NAME = "temp.jpg";
-
-    private static final String TAG = GoogleVision.class.getSimpleName();
-    private static final int GALLERY_IMAGE_REQUEST = 1;
     public static final int CAMERA_PERMISSIONS_REQUEST = 2;
     public static final int CAMERA_IMAGE_REQUEST = 3;
-
+    private static final String CLOUD_VISION_API_KEY = "AIzaSyDkpf0HtAi9HSpsxC_tIOId5Mc3O2SBDPE";
+    private static final String TAG = PictureFragment.class.getSimpleName();
+    private static final int GALLERY_IMAGE_REQUEST = 1;
     private TextView mImageDetails;
     private ImageView mMainImage;
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_google_vision);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                AlertDialog.Builder builder = new AlertDialog.Builder(GoogleVisionActivity.this);
-//                builder
-//                        .setMessage(R.string.dialog_select_prompt)
-//                        .setPositiveButton(R.string.dialog_select_gallery, new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                startGalleryChooser();
-//                            }
-//                        })
-//                        .setNegativeButton(R.string.dialog_select_camera, new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                startCamera();
-//                            }
-//                        });
-//                builder.create().show();
-//            }
-//        });
-//
-//        mImageDetails = (TextView) findViewById(R.id.image_details);
-//        mMainImage = (ImageView) findViewById(R.id.main_image);
-//    }
+
+    public PictureFragment() {
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_picture, container, false);
+
+
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+
+                builder.setMessage(R.string.dialog_select_prompt)
+                        .setPositiveButton(R.string.dialog_select_gallery, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                startGalleryChooser();
+                            }
+                        })
+                        .setNegativeButton(R.string.dialog_select_camera, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                startCamera();
+                            }
+                        });
+
+                AlertDialog alert = builder.create();
+                alert.show();
+                Button nbutton = alert.getButton(DialogInterface.BUTTON_NEGATIVE);
+                nbutton.setTextColor(getResources().getColor(R.color.colorPrimary));
+                Button pbutton = alert.getButton(DialogInterface.BUTTON_POSITIVE);
+                pbutton.setTextColor(getResources().getColor(R.color.colorPrimary));
+
+            }
+        });
+
+        mImageDetails = (TextView) view.findViewById(R.id.image_details);
+        mMainImage = (ImageView) view.findViewById(R.id.main_image);
+
+
+        return view;
+    }
+
 
     public void startGalleryChooser() {
         Intent intent = new Intent();
@@ -115,7 +124,7 @@ public class GoogleVision extends AppCompatActivity {
 
     public void startCamera() {
         if (PermissionUtils.requestPermission(
-                this,
+                getActivity(),
                 CAMERA_PERMISSIONS_REQUEST,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.CAMERA)) {
@@ -131,7 +140,7 @@ public class GoogleVision extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == GALLERY_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
@@ -159,7 +168,7 @@ public class GoogleVision extends AppCompatActivity {
                 // scale the image to save on bandwidth
                 Bitmap bitmap =
                         scaleBitmapDown(
-                                MediaStore.Images.Media.getBitmap(getContentResolver(), uri),
+                                MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri),
                                 1200);
 
                 callCloudVision(bitmap);
@@ -167,11 +176,11 @@ public class GoogleVision extends AppCompatActivity {
 
             } catch (IOException e) {
                 Log.d(TAG, "Image picking failed because " + e.getMessage());
-                Toast.makeText(this, R.string.image_picker_error, Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), R.string.image_picker_error, Toast.LENGTH_LONG).show();
             }
         } else {
             Log.d(TAG, "Image picker gave us a null image.");
-            Toast.makeText(this, R.string.image_picker_error, Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), R.string.image_picker_error, Toast.LENGTH_LONG).show();
         }
     }
 

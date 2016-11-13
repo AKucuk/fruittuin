@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.abdullahkucuk.fruittuin.Fragments.FruittuinVanWestFragment;
+import com.example.abdullahkucuk.fruittuin.Fragments.PictureFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.PlattegrondFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.StartFragment;
 import com.example.abdullahkucuk.fruittuin.R;
