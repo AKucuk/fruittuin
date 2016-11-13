@@ -6,6 +6,7 @@ import android.os.Build;
 
 import com.example.abdullahkucuk.fruittuin.Helpers.UrlHelper;
 import com.example.abdullahkucuk.fruittuin.Models.IntentModel;
+import com.example.abdullahkucuk.fruittuin.Models.LuisEntityModel;
 import com.example.abdullahkucuk.fruittuin.R;
 
 import org.json.JSONArray;
@@ -27,6 +28,31 @@ public class Luis {
 
     public String getResult(){
         return result;
+    }
+
+    public List<LuisEntityModel> getEntities() {
+        List<LuisEntityModel> list = new ArrayList<>();
+
+        try {
+            JSONObject json = new JSONObject(result);
+            JSONArray entities = json.getJSONArray("entities");
+            for (int i = 0; i < entities.length(); i++) {
+                JSONObject entity = entities.getJSONObject(i);
+
+                String entityName = entity.getString("entity");
+                String type = entity.getString("type");
+                int startIndex = entity.getInt("startIndex");
+                int endIndex = entity.getInt("endIndex");
+                double score = entity.getDouble("score");
+
+                list.add(new LuisEntityModel(entityName, type, startIndex, endIndex, score));
+            }
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+        return list;
     }
 
     public List<IntentModel> getIntents() {

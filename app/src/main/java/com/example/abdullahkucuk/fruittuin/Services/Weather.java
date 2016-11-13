@@ -24,11 +24,15 @@ public class Weather {
     Context context;
     float temperature;
 
-    public float getTemperature(){
+    public float getKelvin(){
         return temperature;
     }
     public float getCelcius() {
         return temperature - 273.15f;
+    }
+
+    public float getFahreinheit() {
+        return 9 * temperature / 5 + 32;
     }
 
     public Weather(Context context, String location) {
@@ -91,5 +95,12 @@ public class Weather {
 
     private static float getFloat(String tagName, JSONObject jObj) throws JSONException {
         return (float) jObj.getDouble(tagName);
+    }
+
+    public String getFormattedOutput(Float f) {
+        if(f == f.longValue()) {
+            return String.format("%d",f.longValue());
+        }
+        return String.format("%f", f);
     }
 }

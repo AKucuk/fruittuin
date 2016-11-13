@@ -44,27 +44,27 @@ public class WeatherTask extends AsyncTask<String, Void, Weather> {
                     .show();
             return;
         } else {
-            String betweenMessage;
+            String betweenMessage = String.format("Goed! Om exact te zijn is het %s graden.\n\n", weather.getFormattedOutput(f));
             if(currentTemperatuur < 0) {
-                betweenMessage = "Wauw, de temperatuur is onder het vriespunt! Dit wordt een lastige taak voor ons, maar niets is onmogelijk!";
+                betweenMessage += "Wauw, de temperatuur is onder het vriespunt! Dit wordt een lastige taak voor ons, maar niets is onmogelijk!";
             }
             else if(currentTemperatuur == 0) {
-                betweenMessage = "Wauw het is precies 0 graden! Dat is het vriespunt. Wees voorzichtig!";
+                betweenMessage += "Wauw het is precies 0 graden! Dat is het vriespunt. Wees voorzichtig!";
             }
             else if(currentTemperatuur < 11) {
-                betweenMessage = "De temperatuur is een beetje fris, maar dat houdt ons niet tegen! Laten we aan het werk gaan.";
+                betweenMessage += "De temperatuur is een beetje fris, maar dat houdt ons niet tegen! Laten we aan het werk gaan.";
             }
             else if (currentTemperatuur < 16) {
-                betweenMessage = "Met dit weer zou ik maar niet met korte mouwen lopen, want dan kan je snel ziek worden! Laten we aan het werk gaan.";
+                betweenMessage += "Met dit weer zou ik maar niet met korte mouwen lopen, want dan kan je snel ziek worden! Laten we aan het werk gaan.";
             }
             else if (currentTemperatuur < 20) {
-                betweenMessage = "Dit is nou een lekker t-shirt weer. Weg met die lange mouwen! Laten we aan het werk gaan.";
+                betweenMessage += "Dit is nou een lekker t-shirt weer. Weg met die lange mouwen! Laten we aan het werk gaan.";
             }
             else if(currentTemperatuur < 26) {
-                betweenMessage = "Heerlijk weer! Onder de bijen noemen we dit honingweer. Vergeet je drinken niet mee te pakken want straks krijg je nog dorst!";
+                betweenMessage += "Heerlijk weer! Onder de bijen noemen we dit honingweer. Vergeet je drinken niet mee te pakken want straks krijg je nog dorst!";
             }
             else {
-                betweenMessage = String.format("Wauw, het is %d graden celcius... We gaan flink zweten zo te zien! Vergeet de polsbandjes niet te pakken.", currentTemperatuur);
+                betweenMessage += String.format("Wauw, het is %d graden celcius... We gaan flink zweten zo te zien! Vergeet de polsbandjes niet te pakken.", currentTemperatuur);
             }
 
             BetweenFragment betweenFragment = new BetweenFragment();
