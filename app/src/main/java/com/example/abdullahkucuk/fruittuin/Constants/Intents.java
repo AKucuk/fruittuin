@@ -7,5 +7,5 @@ public class Intents {
     final public static String YES_INTENT = "YesIntent";
     final public static String NO_INTENT = "NoIntent";
     final public static String DONT_KNOW_INTENT = "DontKnowIntent";
-
+    final public static String WIND_DIRECTION_INTENT = "WindRichtingIntent";
 }
