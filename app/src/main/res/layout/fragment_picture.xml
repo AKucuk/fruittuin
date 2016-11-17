@@ -1,4 +1,5 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,18 +14,36 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="112dp"
+                android:layout_height="100dp"
+                android:layout_gravity="right"
+                android:layout_margin="8dp"
+                app:srcCompat="@drawable/x33888080" />
+
             <TextView
-                android:id="@+id/image_details"
+                android:id="@+id/image_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Use the floating action button to select an image." />
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <ImageView
                 android:id="@+id/main_image"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="fitCenter" />
+
+            <Button
+                android:id="@+id/btnVolgende"
+                android:layout_width="121dp"
+                android:layout_height="65dp"
+                android:layout_gravity="right"
+                android:layout_margin="8dp"
+                android:text="Volgende"
+                android:visibility="invisible" />
+
         </LinearLayout>
     </ScrollView>
 

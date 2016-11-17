@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
 import com.example.abdullahkucuk.fruittuin.R;
 import com.example.abdullahkucuk.fruittuin.Services.PermissionUtils;
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -59,12 +60,61 @@ public class PictureFragment extends Fragment {
     private static final String CLOUD_VISION_API_KEY = "AIzaSyDkpf0HtAi9HSpsxC_tIOId5Mc3O2SBDPE";
     private static final String TAG = PictureFragment.class.getSimpleName();
     private static final int GALLERY_IMAGE_REQUEST = 1;
+    Button btnVolgende;
+    View view;
+    FloatingActionButton fab;
     private TextView mImageDetails;
     private ImageView mMainImage;
-
+    private Fragment fragment;
+    private String message;
+    private int numberOfTries;
+    private int numberOfTriesPassed;
+    private String toFindEnglish;
+    private String toFindDutch;
 
     public PictureFragment() {
         // Required empty public constructor
+        numberOfTriesPassed = 0;
+    }
+
+    public int getNumberOfTries() {
+        return numberOfTries;
+    }
+
+    public void setNumberOfTries(int numberOfTries) {
+        this.numberOfTries = numberOfTries;
+    }
+
+    public int getNumberOfTriesPassed() {
+        return numberOfTriesPassed;
+    }
+
+    public void setNumberOfTriesPassed(int numberOfTriesPassed) {
+        this.numberOfTriesPassed = numberOfTriesPassed;
+    }
+
+    public void setToFindEnglish(String toFindEnglish) {
+        this.toFindEnglish = toFindEnglish;
+    }
+
+    public String getToFindDutch() {
+        return toFindDutch;
+    }
+
+    public void setToFindDutch(String toFindDutch) {
+        this.toFindDutch = toFindDutch;
+    }
+
+    public Fragment getFragment() {
+        return fragment;
+    }
+
+    public void setFragment(Fragment fragment) {
+        this.fragment = fragment;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
 
@@ -72,10 +122,9 @@ public class PictureFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_picture, container, false);
+        view = inflater.inflate(R.layout.fragment_picture, container, false);
 
-
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,23 +155,34 @@ public class PictureFragment extends Fragment {
             }
         });
 
-        mImageDetails = (TextView) view.findViewById(R.id.image_details);
+        mImageDetails = (TextView) view.findViewById(R.id.image_text);
+        mImageDetails.setText(message);
         mMainImage = (ImageView) view.findViewById(R.id.main_image);
+        btnVolgende = (Button) view.findViewById(R.id.btnVolgende);
 
+        btnVolgende.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getFragment() == null) {
+                    return;
+                }
+                FragmentHelper.addFragment(getFragmentManager(), getFragment());
+            }
+        });
 
         return view;
     }
-
 
     public void startGalleryChooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select a photo"),
+        startActivityForResult(Intent.createChooser(intent, "Selecteer een foto"),
                 GALLERY_IMAGE_REQUEST);
     }
 
     public void startCamera() {
+
         if (PermissionUtils.requestPermission(
                 getActivity(),
                 CAMERA_PERMISSIONS_REQUEST,
@@ -130,6 +190,7 @@ public class PictureFragment extends Fragment {
                 Manifest.permission.CAMERA)) {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(getCameraFile()));
+
             startActivityForResult(intent, CAMERA_IMAGE_REQUEST);
         }
     }
@@ -186,7 +247,7 @@ public class PictureFragment extends Fragment {
 
     private void callCloudVision(final Bitmap bitmap) throws IOException {
         // Switch text to loading
-        mImageDetails.setText(R.string.loading_message);
+        //mImageDetails.setText(R.string.loading_message);
 
         // Do the real work in an async task, because we need to use the network anyway
         new AsyncTask<Object, Void, String>() {
@@ -237,7 +298,8 @@ public class PictureFragment extends Fragment {
                     Log.d(TAG, "created Cloud Vision request object, sending request");
 
                     BatchAnnotateImagesResponse response = annotateRequest.execute();
-                    return convertResponseToString(response);
+                    //return convertResponseToString(response);
+                    return String.valueOf(itemFound(response, toFindEnglish, toFindDutch));
 
                 } catch (GoogleJsonResponseException e) {
                     Log.d(TAG, "failed to make API request because " + e.getContent());
@@ -249,7 +311,36 @@ public class PictureFragment extends Fragment {
             }
 
             protected void onPostExecute(String result) {
-                mImageDetails.setText(result);
+
+                if (result == "true") {
+                    Toast.makeText(getContext(), "Goed gedaan!", Toast.LENGTH_LONG).show();
+                    fab.hide();
+                    fab.setVisibility(View.INVISIBLE);
+                    btnVolgende.setVisibility(View.VISIBLE);
+                } else if (result == "false") {
+                    if (numberOfTriesPassed < (numberOfTries - 1)) {
+
+
+                        if (numberOfTriesPassed == 0) {
+                            Toast.makeText(getContext(), "Mmmm volgens mij is dit geen " + getToFindDutch() + ". Probeer het nog eens.", Toast.LENGTH_LONG).show();
+                            numberOfTriesPassed++;
+                        } else if (numberOfTriesPassed == (numberOfTries - 2)) {
+                            Toast.makeText(getContext(), "Aaai aai, ik zie nog steeds geen " + getToFindDutch() + ". Kun je het nog een laatste keer proberen?", Toast.LENGTH_LONG).show();
+                            numberOfTriesPassed++;
+                        } else {
+                            Toast.makeText(getContext(), "Helaas, zie ik weer geen " + getToFindDutch() + " op de foto. Kun je het nog eens proberen?", Toast.LENGTH_LONG).show();
+                            numberOfTriesPassed++;
+                        }
+                    } else {
+                        Toast.makeText(getContext(), "Jammer, ik zie nog steeds geen " + getToFindDutch() + ". Laten we verder gaan...", Toast.LENGTH_LONG).show();
+                        fab.hide();
+                        fab.setVisibility(View.INVISIBLE);
+                        btnVolgende.setVisibility(View.VISIBLE);
+
+                    }
+                } else {
+                    Toast.makeText(getContext(), "Oeps, er is iets misgegaan", Toast.LENGTH_LONG).show();
+                }
             }
         }.execute();
     }
@@ -274,19 +365,19 @@ public class PictureFragment extends Fragment {
         return Bitmap.createScaledBitmap(bitmap, resizedWidth, resizedHeight, false);
     }
 
-    private String convertResponseToString(BatchAnnotateImagesResponse response) {
-        String message = "I found these things:\n\n";
+    private boolean itemFound(BatchAnnotateImagesResponse response, String toFindEnglish, String toFindDutch) {
 
         List<EntityAnnotation> labels = response.getResponses().get(0).getLabelAnnotations();
         if (labels != null) {
             for (EntityAnnotation label : labels) {
-                message += String.format("%.3f: %s", label.getScore(), label.getDescription());
-                message += "\n";
+                if (label.getDescription().toLowerCase().contains(toFindEnglish.toLowerCase()))
+                    //return "Goed gedaan!";
+                    return true;
             }
-        } else {
-            message += "nothing";
         }
-
-        return message;
+        return false;
+        //return "Mmmm volgens mij is dit geen" + toFindDutch + "Probeer het nog eens.";
     }
+
+
 }

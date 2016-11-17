@@ -3,6 +3,7 @@ package com.example.abdullahkucuk.fruittuin.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,6 +15,7 @@ import android.view.MenuItem;
 import com.example.abdullahkucuk.fruittuin.Fragments.FruittuinVanWestFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.PictureFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.PlattegrondFragment;
+import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.PromptLocationFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.StartFragment;
 import com.example.abdullahkucuk.fruittuin.R;
 
@@ -39,6 +41,16 @@ public class MainActivity extends AppCompatActivity
 
         android.support.v4.app.FragmentManager ft = getSupportFragmentManager();
         ft.beginTransaction().replace(R.id.fragment_frame, new StartFragment()).commit();
+
+//        Fragment fragment = new StartFragment();
+//        PictureFragment pictureFragment = new PictureFragment();
+//        pictureFragment.setFragment(fragment);
+//        pictureFragment.setMessage(getResources().getString(R.string.picture_fragment_text_apple));
+//        pictureFragment.setToFindDutch("appel");
+//        pictureFragment.setToFindEnglish("apple");
+//        pictureFragment.setNumberOfTries(4);
+//        ft.beginTransaction().replace(R.id.fragment_frame, pictureFragment).commit();
+
     }
 
     @Override
