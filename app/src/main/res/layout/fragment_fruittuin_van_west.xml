@@ -1,13 +1,91 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.abdullahkucuk.fruittuin.Fragments.FruittuinVanWestFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+        android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <ImageView
+                    android:id="@+id/imageView14"
+                    android:layout_width="match_parent"
+                    android:layout_height="213dp"
+                    app:srcCompat="@drawable/fruittuinregenboog" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Over de Fruittuin"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/textView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fruittuin van West is dé on- ontdekte plek voor groot en klein in de polders tussen Amsterdam en Haarlem. Een biologisch dynamische boomgaard met zelfpluk, rondscharrelende kippen, een earthship met Tuincafé en winkel voor al je dagelijkse boodschappen. Lekker ontspannen, je verwonderen, fijne mensen ontmoeten of buiten ravotten; het past allemaal.
+Check Fruittuinvanwest.nl om te zien wat er te oogsten is én of er extra activiteiten zijn.
+" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Boomgaard"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="26 maart 2014 plantten drie generaties Sturkenboom de eerste boom in Fruittuin van West. Er volgden er nog zo’n 22000. Op 6.5 ha grond staan nu 20 soorten fruit; bedoeld voor zelfpluk. Dat betekent dat al ons fruit geplukt wordt door de consumenten zelf! Die komen hier aan, krijgen uitleg over wat geplukt kan worden, waar dat staat en wat dat kost. Na het plukken komen ze weer terug bij het begin om het fruit af te wegen en te betalen. Natuurlijk mag er in de boomgaard geproefd worden. Sterker nog: dat vinden we alleen maar leuk, want dan weet je wat je koopt. Maar we zijn geen gesubsidieerd bedrijf en dus moet alles wél betaald worden!" />
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:layout_weight="0.59"
+                    app:srcCompat="@drawable/gewassen" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Gewassen"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="In Fruittuin van West staan, op een relatief klein oppervlak, ontzettend veel verschillende soorten fruit en wat typische groenten. Dit hebben we gedaan om de bezoekers zo lang mogelijk de kans te geven ZELF te oogsten. De gewassen buiten zijn natuurlijk seizoensgebonden maar straks kan je het hele jaar door “binnen” witlof en shiitakes oogsten. De oogstkalender geeft je een goed beeld van de enorme diversiteit. Omdat Wil al sinds 1984 fruitteler is, hebben we op dat vlak het meeste kennis en ervaring. De rassen die we hebben geplant zijn door ons vooral uitgekozen op smaak, karakter en weerbaarheid tegen ziektes (hoe goed ze biologisch te telen zijn). Ons fruit en de groenten zien er ook nog eens prachtig uit; maar dat is niet waar het ons om gaat." />
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
 </FrameLayout>

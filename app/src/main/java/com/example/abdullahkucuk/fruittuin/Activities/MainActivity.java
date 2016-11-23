@@ -12,7 +12,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.abdullahkucuk.fruittuin.Fragments.ContactFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.FruittuinVanWestFragment;
+import com.example.abdullahkucuk.fruittuin.Fragments.OpeningstijdenFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.PictureFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.PlattegrondFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.PromptLocationFragment;
@@ -100,6 +102,12 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_plattegrond) {
             ft.beginTransaction().replace(R.id.fragment_frame, new PlattegrondFragment()).commit();
+
+        } else if (id == R.id.nav_contact) {
+            ft.beginTransaction().replace(R.id.fragment_frame, new ContactFragment()).commit();
+
+        } else if (id == R.id.nav_openingstijden) {
+            ft.beginTransaction().replace(R.id.fragment_frame, new OpeningstijdenFragment()).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
