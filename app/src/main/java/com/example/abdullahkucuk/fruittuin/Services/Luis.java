@@ -26,6 +26,18 @@ public class Luis {
     Context context;
     String result;
 
+    public Luis(Context context, String query) {
+        this.context = context;
+
+        String url = null;
+        try {
+            url = CreateUrl(query);
+            result = UrlHelper.getUrlContent(url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public String getResult(){
         return result;
     }
@@ -73,30 +85,20 @@ public class Luis {
 
         return list;
     }
+
     public IntentModel getBestIntent() {
         List<IntentModel> intents = getIntents();
         if(intents.isEmpty())
             return null;
-        IntentModel bestIntent = intents.stream().max(new Comparator<IntentModel>() {
-            @Override
-            public int compare(IntentModel o1, IntentModel o2) {
-                return (int)(o1.getScore() - o2.getScore());
-            }
-        }).get();
+        IntentModel bestIntent = intents.get(0);
+//        IntentModel bestIntent = intents.stream().max(new Comparator<IntentModel>() {
+//            @Override
+//            public int compare(IntentModel o1, IntentModel o2) {
+//                return (int)(o1.getScore() - o2.getScore());
+//            }
+//        }).get();
 
         return bestIntent;
-    }
-
-    public Luis(Context context, String query) {
-        this.context = context;
-
-        String url = null;
-        try {
-            url = CreateUrl(query);
-            result = UrlHelper.getUrlContent(url);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     private String CreateUrl(String query) throws UnsupportedEncodingException {
