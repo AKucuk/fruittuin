@@ -69,8 +69,8 @@ public class PictureFragment extends Fragment {
     private String message;
     private int numberOfTries;
     private int numberOfTriesPassed;
-    private String toFindEnglish;
-    private String toFindDutch;
+    private List<String> toFindEnglish;
+    private List<String> toFindDutch;
 
     public PictureFragment() {
         // Required empty public constructor
@@ -93,15 +93,15 @@ public class PictureFragment extends Fragment {
         this.numberOfTriesPassed = numberOfTriesPassed;
     }
 
-    public void setToFindEnglish(String toFindEnglish) {
+    public void setToFindEnglish(List<String> toFindEnglish) {
         this.toFindEnglish = toFindEnglish;
     }
 
     public String getToFindDutch() {
-        return toFindDutch;
+        return toFindDutch.get(0);
     }
 
-    public void setToFindDutch(String toFindDutch) {
+    public void setToFindDutch(List<String> toFindDutch) {
         this.toFindDutch = toFindDutch;
     }
 
@@ -365,19 +365,34 @@ public class PictureFragment extends Fragment {
         return Bitmap.createScaledBitmap(bitmap, resizedWidth, resizedHeight, false);
     }
 
-    private boolean itemFound(BatchAnnotateImagesResponse response, String toFindEnglish, String toFindDutch) {
+    private boolean itemFound(BatchAnnotateImagesResponse response, List<String> toFindEnglish, List<String> toFindDutch) {
+
 
         List<EntityAnnotation> labels = response.getResponses().get(0).getLabelAnnotations();
         if (labels != null) {
-            for (EntityAnnotation label : labels) {
-                if (label.getDescription().toLowerCase().contains(toFindEnglish.toLowerCase()))
-                    //return "Goed gedaan!";
-                    return true;
+
+            boolean foundAll = true;
+
+            for (String toFind : toFindEnglish) {
+
+                boolean partFound = false;
+
+                for (EntityAnnotation label : labels) {
+                    if (label.getDescription().toLowerCase().contains(toFind.toLowerCase()))
+                        //return "Mmmm volgens mij is dit geen" + toFindDutch + "Probeer het nog eens.";
+                        partFound = true;
+                }
+
+                if (!partFound) {
+                    foundAll = false;
+                }
+
             }
+            return foundAll;
+        } else {
+            return false;
         }
-        return false;
-        //return "Mmmm volgens mij is dit geen" + toFindDutch + "Probeer het nog eens.";
+
+        //return "Goed gedaan!";
     }
-
-
 }
