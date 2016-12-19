@@ -11,11 +11,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.abdullahkucuk.fruittuin.Global.Memory;
+import com.example.abdullahkucuk.fruittuin.Global.Session;
 import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
 import com.example.abdullahkucuk.fruittuin.Helpers.KeyboardHelper;
 import com.example.abdullahkucuk.fruittuin.Helpers.NetworkHelper;
 import com.example.abdullahkucuk.fruittuin.Models.UserModel;
 import com.example.abdullahkucuk.fruittuin.R;
+
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -64,6 +68,10 @@ public class PromptNameFragment extends Fragment {
                             .show();
                     return;
                 }
+
+                Session session = Memory.getInstance();
+                session.setName(name);
+
 
                 UserModel userModel = new UserModel();
                 userModel.name = name;

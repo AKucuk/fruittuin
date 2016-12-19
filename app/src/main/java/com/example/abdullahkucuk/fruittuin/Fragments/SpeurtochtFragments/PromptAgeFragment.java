@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.abdullahkucuk.fruittuin.Fragments.BetweenFragment;
+import com.example.abdullahkucuk.fruittuin.Global.Memory;
+import com.example.abdullahkucuk.fruittuin.Global.Session;
 import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
 import com.example.abdullahkucuk.fruittuin.Helpers.KeyboardHelper;
 import com.example.abdullahkucuk.fruittuin.Helpers.NetworkHelper;
@@ -94,6 +96,10 @@ public class PromptAgeFragment extends Fragment {
 
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("userModel", userModel);
+
+                Session session = Memory.getInstance();
+                session.setAge(leeftijd);
+
 
                 Fragment fragment = new PromptLocationFragment();
                 fragment.setArguments(bundle);

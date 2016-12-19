@@ -8,6 +8,8 @@ import android.widget.Toast;
 import com.example.abdullahkucuk.fruittuin.Fragments.BetweenFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.AcclimatizeFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.PromptLocationFragment;
+import com.example.abdullahkucuk.fruittuin.Global.Memory;
+import com.example.abdullahkucuk.fruittuin.Global.Session;
 import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
 import com.example.abdullahkucuk.fruittuin.R;
 import com.example.abdullahkucuk.fruittuin.Services.GoogleDistanceMatrix;
@@ -52,6 +54,10 @@ public class LocationTask extends AsyncTask<String, Void, GoogleDistanceMatrix> 
 
         Bundle bundle = new Bundle();
         bundle.putParcelable("userModel", promptLocationFragment.getUserModel());
+
+        Session session = Memory.getInstance();
+        session.setLocation(googleDistanceMatrix.getDestination());
+
 
         Fragment fragment = new AcclimatizeFragment();
         fragment.setArguments(bundle);

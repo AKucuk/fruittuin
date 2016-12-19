@@ -1,9 +1,7 @@
 package com.example.abdullahkucuk.fruittuin.Activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,20 +10,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.abdullahkucuk.fruittuin.Fragments.BetweenAlternativeFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.ContactFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.FruittuinVanWestFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.OpeningstijdenFragment;
-import com.example.abdullahkucuk.fruittuin.Fragments.PictureFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.PlattegrondFragment;
-import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.ClayFragment;
-import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.GroundtypeFragment;
-import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.ProefPaardenbloemFragment;
-import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.PromptLocationFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.StartFragment;
+import com.example.abdullahkucuk.fruittuin.Global.Memory;
+import com.example.abdullahkucuk.fruittuin.Global.Session;
 import com.example.abdullahkucuk.fruittuin.R;
 
-import java.util.Arrays;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -47,95 +41,98 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        Session session = Memory.getInstance();
+        session.setDateStart(new Date());
+
         android.support.v4.app.FragmentManager ft = getSupportFragmentManager();
-        //ft.beginTransaction().replace(R.id.fragment_frame, new StartFragment()).commit();
+        ft.beginTransaction().replace(R.id.fragment_frame, new StartFragment()).commit();
 
-        //successorChickenFragment:
-        BetweenAlternativeFragment successorChickenFragment = new BetweenAlternativeFragment();
-        successorChickenFragment.setTextPartOne(getResources().getString(R.string.picture_fragment_text_chicken_explanation));
-        //successorChickenFragment.setFragment(chickenFragment);
-
-        //chickenFragment
-        PictureFragment chickenFragment = new PictureFragment();
-        chickenFragment.setFragment(successorChickenFragment);
-        chickenFragment.setMessage(getResources().getString(R.string.picture_fragment_text_chicken));
-        chickenFragment.setToFindDutch(Arrays.asList("kip", "vogel"));
-        chickenFragment.setToFindEnglish(Arrays.asList("chicken", "bird"));
-        chickenFragment.setNumberOfTries(4);
-
-        //successorBlackBerryFragment:
-        BetweenAlternativeFragment successorBlackBerryFragment = new BetweenAlternativeFragment();
-        successorBlackBerryFragment.setTextPartOne(getResources().getString(R.string.picture_fragment_text_blackberry_explanation));
-        successorBlackBerryFragment.setFragment(chickenFragment);
-
-        //blackBerryFragment
-        PictureFragment blackBerryFragment = new PictureFragment();
-        blackBerryFragment.setFragment(successorBlackBerryFragment);
-        blackBerryFragment.setMessage(getResources().getString(R.string.picture_fragment_text_blackberry));
-        blackBerryFragment.setToFindDutch(Arrays.asList("braam", "fruit"));
-        blackBerryFragment.setToFindEnglish(Arrays.asList("blackberry", "fruit"));
-        blackBerryFragment.setNumberOfTries(4);
-
-        //successorCherryFragment:
-        BetweenAlternativeFragment successorCherryFragment = new BetweenAlternativeFragment();
-        successorCherryFragment.setTextPartOne(getResources().getString(R.string.picture_fragment_text_raspberry_explanation));
-        successorCherryFragment.setFragment(blackBerryFragment);
-
-        //raspBerryFragment
-        PictureFragment cherryPictureFragment = new PictureFragment();
-        cherryPictureFragment.setFragment(successorCherryFragment);
-        cherryPictureFragment.setMessage(getResources().getString(R.string.picture_fragment_text_cherry));
-        cherryPictureFragment.setToFindDutch(Arrays.asList("kers", "fruit"));
-        cherryPictureFragment.setToFindEnglish(Arrays.asList("cherry", "fruit"));
-        cherryPictureFragment.setNumberOfTries(4);
-
-        //successorRaspBerryFragment:
-        BetweenAlternativeFragment successorRaspBerryFragment = new BetweenAlternativeFragment();
-        successorRaspBerryFragment.setTextPartOne(getResources().getString(R.string.picture_fragment_text_raspberry_explanation));
-        successorRaspBerryFragment.setFragment(cherryPictureFragment);
-
-        //raspBerryFragment
-        PictureFragment raspberryPictureFragment = new PictureFragment();
-        raspberryPictureFragment.setFragment(successorRaspBerryFragment);
-        raspberryPictureFragment.setMessage(getResources().getString(R.string.picture_fragment_text_raspberry));
-        raspberryPictureFragment.setToFindDutch(Arrays.asList("framboos", "fruit"));
-        raspberryPictureFragment.setToFindEnglish(Arrays.asList("raspberry", "fruit"));
-        raspberryPictureFragment.setNumberOfTries(4);
-
-        //clayFragment
-        ClayFragment clayFragment = new ClayFragment();
-        clayFragment.setFragment(raspberryPictureFragment);
-
-        //groundtypeFragment
-        GroundtypeFragment groundtypeFragment = new GroundtypeFragment();
-        groundtypeFragment.setFragment(clayFragment);
-
-        //proefPaardenbloemFragment
-        ProefPaardenbloemFragment tasteDandelionFragment = new ProefPaardenbloemFragment();
-        tasteDandelionFragment.setFragment(groundtypeFragment);
-
-        //successorDandelion:
-        BetweenAlternativeFragment successorDandelionFragment = new BetweenAlternativeFragment();
-        successorDandelionFragment.setTextPartOne(getResources().getString(R.string.picture_fragment_text_paardenbloem_eetbaar));
-        successorDandelionFragment.setFragment(tasteDandelionFragment);
-
-        //dandelionPictureFragment
-        PictureFragment pictureFragment = new PictureFragment();
-        pictureFragment.setFragment(successorDandelionFragment);
-        pictureFragment.setMessage(getResources().getString(R.string.picture_fragment_text_paardenbloem));
-        pictureFragment.setToFindDutch(Arrays.asList("paardenbloem", "bloem"));
-        pictureFragment.setToFindEnglish(Arrays.asList("dandelion", "flower"));
-        pictureFragment.setNumberOfTries(4);
-        ft.beginTransaction().replace(R.id.fragment_frame, pictureFragment).commit();
-
-        //apple
+//        //successorChickenFragment:
+//        BetweenAlternativeFragment successorChickenFragment = new BetweenAlternativeFragment();
+//        successorChickenFragment.setTextPartOne(getResources().getString(R.string.picture_fragment_text_chicken_explanation));
+//        //successorChickenFragment.setFragment(chickenFragment);
+//
+//        //chickenFragment
+//        PictureFragment chickenFragment = new PictureFragment();
+//        chickenFragment.setFragment(successorChickenFragment);
+//        chickenFragment.setMessage(getResources().getString(R.string.picture_fragment_text_chicken));
+//        chickenFragment.setToFindDutch(Arrays.asList("kip", "vogel"));
+//        chickenFragment.setToFindEnglish(Arrays.asList("chicken", "bird"));
+//        chickenFragment.setNumberOfTries(4);
+//
+//        //successorBlackBerryFragment:
+//        BetweenAlternativeFragment successorBlackBerryFragment = new BetweenAlternativeFragment();
+//        successorBlackBerryFragment.setTextPartOne(getResources().getString(R.string.picture_fragment_text_blackberry_explanation));
+//        successorBlackBerryFragment.setFragment(chickenFragment);
+//
+//        //blackBerryFragment
+//        PictureFragment blackBerryFragment = new PictureFragment();
+//        blackBerryFragment.setFragment(successorBlackBerryFragment);
+//        blackBerryFragment.setMessage(getResources().getString(R.string.picture_fragment_text_blackberry));
+//        blackBerryFragment.setToFindDutch(Arrays.asList("braam", "fruit"));
+//        blackBerryFragment.setToFindEnglish(Arrays.asList("blackberry", "fruit"));
+//        blackBerryFragment.setNumberOfTries(4);
+//
+//        //successorCherryFragment:
+//        BetweenAlternativeFragment successorCherryFragment = new BetweenAlternativeFragment();
+//        successorCherryFragment.setTextPartOne(getResources().getString(R.string.picture_fragment_text_raspberry_explanation));
+//        successorCherryFragment.setFragment(blackBerryFragment);
+//
+//        //raspBerryFragment
+//        PictureFragment cherryPictureFragment = new PictureFragment();
+//        cherryPictureFragment.setFragment(successorCherryFragment);
+//        cherryPictureFragment.setMessage(getResources().getString(R.string.picture_fragment_text_cherry));
+//        cherryPictureFragment.setToFindDutch(Arrays.asList("kers", "fruit"));
+//        cherryPictureFragment.setToFindEnglish(Arrays.asList("cherry", "fruit"));
+//        cherryPictureFragment.setNumberOfTries(4);
+//
+//        //successorRaspBerryFragment:
+//        BetweenAlternativeFragment successorRaspBerryFragment = new BetweenAlternativeFragment();
+//        successorRaspBerryFragment.setTextPartOne(getResources().getString(R.string.picture_fragment_text_raspberry_explanation));
+//        successorRaspBerryFragment.setFragment(cherryPictureFragment);
+//
+//        //raspBerryFragment
+//        PictureFragment raspberryPictureFragment = new PictureFragment();
+//        raspberryPictureFragment.setFragment(successorRaspBerryFragment);
+//        raspberryPictureFragment.setMessage(getResources().getString(R.string.picture_fragment_text_raspberry));
+//        raspberryPictureFragment.setToFindDutch(Arrays.asList("framboos", "fruit"));
+//        raspberryPictureFragment.setToFindEnglish(Arrays.asList("raspberry", "fruit"));
+//        raspberryPictureFragment.setNumberOfTries(4);
+//
+//        //clayFragment
+//        ClayFragment clayFragment = new ClayFragment();
+//        clayFragment.setFragment(raspberryPictureFragment);
+//
+//        //groundtypeFragment
+//        GroundtypeFragment groundtypeFragment = new GroundtypeFragment();
+//        groundtypeFragment.setFragment(clayFragment);
+//
+//        //proefPaardenbloemFragment
+//        ProefPaardenbloemFragment tasteDandelionFragment = new ProefPaardenbloemFragment();
+//        tasteDandelionFragment.setFragment(groundtypeFragment);
+//
+//        //successorDandelion:
+//        BetweenAlternativeFragment successorDandelionFragment = new BetweenAlternativeFragment();
+//        successorDandelionFragment.setTextPartOne(getResources().getString(R.string.picture_fragment_text_paardenbloem_eetbaar));
+//        successorDandelionFragment.setFragment(tasteDandelionFragment);
+//
+//        //dandelionPictureFragment
 //        PictureFragment pictureFragment = new PictureFragment();
-//        pictureFragment.setFragment(fragment);
-//        pictureFragment.setMessage(getResources().getString(R.string.picture_fragment_text_apple));
-//        pictureFragment.setToFindDutch(Arrays.asList("appel", "fruit"));
-//        pictureFragment.setToFindEnglish(Arrays.asList("apple", "fruit"));
+//        pictureFragment.setFragment(successorDandelionFragment);
+//        pictureFragment.setMessage(getResources().getString(R.string.picture_fragment_text_paardenbloem));
+//        pictureFragment.setToFindDutch(Arrays.asList("paardenbloem", "bloem"));
+//        pictureFragment.setToFindEnglish(Arrays.asList("dandelion", "flower"));
 //        pictureFragment.setNumberOfTries(4);
 //        ft.beginTransaction().replace(R.id.fragment_frame, pictureFragment).commit();
+//
+//        //apple
+////        PictureFragment pictureFragment = new PictureFragment();
+////        pictureFragment.setFragment(fragment);
+////        pictureFragment.setMessage(getResources().getString(R.string.picture_fragment_text_apple));
+////        pictureFragment.setToFindDutch(Arrays.asList("appel", "fruit"));
+////        pictureFragment.setToFindEnglish(Arrays.asList("apple", "fruit"));
+////        pictureFragment.setNumberOfTries(4);
+////        ft.beginTransaction().replace(R.id.fragment_frame, pictureFragment).commit();
 
     }
 
