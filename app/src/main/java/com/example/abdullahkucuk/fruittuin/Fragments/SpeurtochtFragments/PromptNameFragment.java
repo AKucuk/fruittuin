@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.abdullahkucuk.fruittuin.Global.Memory;
 import com.example.abdullahkucuk.fruittuin.Global.Session;
+import com.example.abdullahkucuk.fruittuin.Global.SheetWriter;
 import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
 import com.example.abdullahkucuk.fruittuin.Helpers.KeyboardHelper;
 import com.example.abdullahkucuk.fruittuin.Helpers.NetworkHelper;
@@ -72,6 +73,8 @@ public class PromptNameFragment extends Fragment {
                 Session session = Memory.getInstance();
                 session.setName(name);
 
+                //Object sheetWriter = new SheetWriter();
+                //sheetWriter.writeSession(session);
 
                 UserModel userModel = new UserModel();
                 userModel.name = name;
