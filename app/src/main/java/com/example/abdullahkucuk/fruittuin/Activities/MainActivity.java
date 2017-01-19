@@ -1,11 +1,13 @@
 package com.example.abdullahkucuk.fruittuin.Activities;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -83,8 +85,23 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_exit) {
+            //return true;
+
+            new AlertDialog.Builder(this, R.style.MyDialogTheme)
+                    //.setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("Afsluiten")
+                    .setMessage("Wilt u de app echt afsluiten?")
+                    .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+
+                    })
+                    .setNegativeButton("Nee", null)
+                    .show();
+
         }
 
         return super.onOptionsItemSelected(item);
