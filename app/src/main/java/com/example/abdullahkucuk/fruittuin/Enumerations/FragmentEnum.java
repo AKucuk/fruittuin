@@ -9,6 +9,5 @@ public enum FragmentEnum {
     FRUITTUIN_VAN_WEST,
     PLATTEGROND,
     CONTACT,
-    OPENINGSTIJDEN,
-    PLACEHOLDER
+    OPENINGSTIJDEN
 };

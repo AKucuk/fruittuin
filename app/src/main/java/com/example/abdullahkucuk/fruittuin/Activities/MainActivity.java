@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity
         session.setDateStart(new Date());
 
         android.support.v4.app.FragmentManager ft = getSupportFragmentManager();
-        ft.beginTransaction().replace(R.id.fragment_frame, fragmentManager.getFragment(FragmentEnum.PLACEHOLDER)).commit();
+        ft.beginTransaction().replace(R.id.fragment_frame, fragmentManager.getFragment(FragmentEnum.START)).commit();
 
     }
 
@@ -95,8 +95,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_speurtocht) {
-            //ft.beginTransaction().replace(R.id.fragment_frame, fragmentManager.getFragment(FragmentEnum.START)).commit();
-            ft.beginTransaction().replace(R.id.fragment_frame, fragmentManager.getFragment(FragmentEnum.PLACEHOLDER)).commit();
+            ft.beginTransaction().replace(R.id.fragment_frame, FragmentHelper.mFragment).commit();
         } else if (id == R.id.nav_fruittuin) {
             ft.beginTransaction().replace(R.id.fragment_frame, fragmentManager.getFragment(FragmentEnum.FRUITTUIN_VAN_WEST)).commit();
 

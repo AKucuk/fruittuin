@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.abdullahkucuk.fruittuin.Constants.Intents;
-import com.example.abdullahkucuk.fruittuin.Fragments.PlaceholderFragment;
 import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
 import com.example.abdullahkucuk.fruittuin.Helpers.NetworkHelper;
 import com.example.abdullahkucuk.fruittuin.Models.IntentModel;

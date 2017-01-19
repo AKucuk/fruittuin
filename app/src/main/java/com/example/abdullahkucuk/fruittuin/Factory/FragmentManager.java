@@ -6,7 +6,6 @@ import com.example.abdullahkucuk.fruittuin.Enumerations.FragmentEnum;
 import com.example.abdullahkucuk.fruittuin.Fragments.ContactFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.FruittuinVanWestFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.OpeningstijdenFragment;
-import com.example.abdullahkucuk.fruittuin.Fragments.PlaceholderFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.PlattegrondFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.StartFragment;
 
@@ -20,7 +19,6 @@ public class FragmentManager {
     private static Fragment plattegrondFragment = null;
     private static Fragment contactFragment = null;
     private static Fragment openingstijdenFragment = null;
-    private static Fragment placeholderFragment = null;
 
     public FragmentManager() {
 
@@ -39,8 +37,6 @@ public class FragmentManager {
                 return getContactFragment();
             case OPENINGSTIJDEN:
                 return getOpeningstijdenFragment();
-            case PLACEHOLDER:
-                return getPlaceholderFragment();
             default:
                 break;
         }
@@ -79,9 +75,4 @@ public class FragmentManager {
         return openingstijdenFragment;
     }
 
-    public Fragment getPlaceholderFragment() {
-        if(placeholderFragment == null)
-            placeholderFragment = new PlaceholderFragment();
-        return placeholderFragment;
-    }
 }
