@@ -19,7 +19,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="40dp"
-            android:text="Wat een mooie\nnaam heb je, {name}!\n\nIk vind het erg leuk om kennis met je te maken. Mijn naam is Billy de Bij. Ik ben al twee en halve week oud.\n\nHoe oud ben jij eigenlijk?"
+            android:text="Wat een mooie\nnaam heb je, {name}!\n\nIk vind het erg leuk om kennis met je te maken. Ik ben al twee en halve week oud.\n\nHoe oud ben jij eigenlijk?"
             android:textAppearance="?android:attr/textAppearanceLarge"
             app:layout_constraintBottom_toTopOf="@+id/txtTemperatuur"
             app:layout_constraintLeft_toLeftOf="parent"

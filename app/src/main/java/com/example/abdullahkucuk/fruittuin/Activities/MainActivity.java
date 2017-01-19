@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            if(!getSupportFragmentManager().beginTransaction().isEmpty())
                 super.onBackPressed();
         }
     }
@@ -98,18 +97,18 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_speurtocht) {
-            ft.beginTransaction().replace(R.id.fragment_frame, FragmentHelper.mFragment).commit();
+            ft.beginTransaction().replace(R.id.fragment_frame, FragmentHelper.mFragment).addToBackStack("SPEURTOCHT").commit();
         } else if (id == R.id.nav_fruittuin) {
-            ft.beginTransaction().replace(R.id.fragment_frame, fragmentManager.getFragment(FragmentEnum.FRUITTUIN_VAN_WEST)).commit();
+            ft.beginTransaction().replace(R.id.fragment_frame, fragmentManager.getFragment(FragmentEnum.FRUITTUIN_VAN_WEST)).addToBackStack("FRUITTUIN_VAN_WEST").commit();
 
         } else if (id == R.id.nav_plattegrond) {
-            ft.beginTransaction().replace(R.id.fragment_frame, fragmentManager.getFragment(FragmentEnum.PLATTEGROND)).commit();
+            ft.beginTransaction().replace(R.id.fragment_frame, fragmentManager.getFragment(FragmentEnum.PLATTEGROND)).addToBackStack("PLATTEGROND").commit();
 
         } else if (id == R.id.nav_contact) {
-            ft.beginTransaction().replace(R.id.fragment_frame, fragmentManager.getFragment(FragmentEnum.CONTACT)).commit();
+            ft.beginTransaction().replace(R.id.fragment_frame, fragmentManager.getFragment(FragmentEnum.CONTACT)).addToBackStack("CONTACT").commit();
 
         } else if (id == R.id.nav_openingstijden) {
-            ft.beginTransaction().replace(R.id.fragment_frame, fragmentManager.getFragment(FragmentEnum.CONTACT)).commit();
+            ft.beginTransaction().replace(R.id.fragment_frame, fragmentManager.getFragment(FragmentEnum.OPENINGSTIJDEN)).addToBackStack("OPENINGSTIJDEN").commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

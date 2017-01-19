@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.abdullahkucuk.fruittuin.Activities.MainActivity;
 import com.example.abdullahkucuk.fruittuin.Global.Memory;
 import com.example.abdullahkucuk.fruittuin.Global.Session;
 import com.example.abdullahkucuk.fruittuin.Global.SheetWriter;
@@ -43,6 +44,7 @@ public class PromptNameFragment extends Fragment {
                              Bundle savedInstanceState) {
         promptNameFragment = this;
         super.onCreate(savedInstanceState);
+
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_prompt_name, container, false);
@@ -89,9 +91,9 @@ public class PromptNameFragment extends Fragment {
             }
         });
 
+
         return view;
     }
-
 
 
 }
