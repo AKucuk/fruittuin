@@ -2,6 +2,7 @@ package com.example.abdullahkucuk.fruittuin.Activities;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -10,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.abdullahkucuk.fruittuin.Enumerations.FragmentEnum;
+import com.example.abdullahkucuk.fruittuin.Factory.FragmentManager;
 import com.example.abdullahkucuk.fruittuin.Fragments.ContactFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.FruittuinVanWestFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.OpeningstijdenFragment;
@@ -17,12 +20,15 @@ import com.example.abdullahkucuk.fruittuin.Fragments.PlattegrondFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.StartFragment;
 import com.example.abdullahkucuk.fruittuin.Global.Memory;
 import com.example.abdullahkucuk.fruittuin.Global.Session;
+import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
 import com.example.abdullahkucuk.fruittuin.R;
 
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    FragmentManager fragmentManager = new FragmentManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +51,7 @@ public class MainActivity extends AppCompatActivity
         session.setDateStart(new Date());
 
         android.support.v4.app.FragmentManager ft = getSupportFragmentManager();
-        ft.beginTransaction().replace(R.id.fragment_frame, new StartFragment()).commit();
-
+        ft.beginTransaction().replace(R.id.fragment_frame, fragmentManager.getFragment(FragmentEnum.PLACEHOLDER)).commit();
 
     }
 
@@ -90,19 +95,19 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_speurtocht) {
-            ft.beginTransaction().replace(R.id.fragment_frame, new StartFragment()).commit();
-
+            //ft.beginTransaction().replace(R.id.fragment_frame, fragmentManager.getFragment(FragmentEnum.START)).commit();
+            ft.beginTransaction().replace(R.id.fragment_frame, fragmentManager.getFragment(FragmentEnum.PLACEHOLDER)).commit();
         } else if (id == R.id.nav_fruittuin) {
-            ft.beginTransaction().replace(R.id.fragment_frame, new FruittuinVanWestFragment()).commit();
+            ft.beginTransaction().replace(R.id.fragment_frame, fragmentManager.getFragment(FragmentEnum.FRUITTUIN_VAN_WEST)).commit();
 
         } else if (id == R.id.nav_plattegrond) {
-            ft.beginTransaction().replace(R.id.fragment_frame, new PlattegrondFragment()).commit();
+            ft.beginTransaction().replace(R.id.fragment_frame, fragmentManager.getFragment(FragmentEnum.PLATTEGROND)).commit();
 
         } else if (id == R.id.nav_contact) {
-            ft.beginTransaction().replace(R.id.fragment_frame, new ContactFragment()).commit();
+            ft.beginTransaction().replace(R.id.fragment_frame, fragmentManager.getFragment(FragmentEnum.CONTACT)).commit();
 
         } else if (id == R.id.nav_openingstijden) {
-            ft.beginTransaction().replace(R.id.fragment_frame, new OpeningstijdenFragment()).commit();
+            ft.beginTransaction().replace(R.id.fragment_frame, fragmentManager.getFragment(FragmentEnum.CONTACT)).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

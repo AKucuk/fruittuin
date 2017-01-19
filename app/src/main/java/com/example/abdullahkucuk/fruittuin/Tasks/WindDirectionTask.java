@@ -32,6 +32,15 @@ public class WindDirectionTask extends AsyncTask<String, Void, Luis> {
     protected Luis doInBackground(String... params) {
         String windDirection = params[0];
 
+        //Before doing a luis call, try to determine ourself:
+        String[] richtingen = {"zuid", "noord", "oost", "west"};
+        if(Arrays.asList(richtingen).contains(windDirection.toLowerCase())) {
+            switch(windDirection.toLowerCase()) {
+                default:
+                    break;
+            }
+        }
+
         return new Luis(promptWindDirectionFragment.getContext(), windDirection);
     }
 

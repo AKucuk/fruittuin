@@ -11,9 +11,16 @@ import com.example.abdullahkucuk.fruittuin.R;
  */
 
 public class FragmentHelper {
-    public static void addFragment(FragmentManager fragmentManager, Fragment fragment) {
+    /*public static void addFragment(FragmentManager fragmentManager, Fragment fragment) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fragment_frame, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+    */
+    public static void addFragment(FragmentManager fragmentManager, Fragment fragment) {
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.placeholder_frame, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
     }
