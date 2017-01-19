@@ -51,7 +51,9 @@ public class MainActivity extends AppCompatActivity
         session.setDateStart(new Date());
 
         android.support.v4.app.FragmentManager ft = getSupportFragmentManager();
-        ft.beginTransaction().replace(R.id.fragment_frame, fragmentManager.getFragment(FragmentEnum.START)).commit();
+
+        FragmentHelper.mFragment = fragmentManager.getFragment(FragmentEnum.START);
+        ft.beginTransaction().replace(R.id.fragment_frame, FragmentHelper.mFragment).commit();
 
     }
 
@@ -61,7 +63,8 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if(!getSupportFragmentManager().beginTransaction().isEmpty())
+                super.onBackPressed();
         }
     }
 

@@ -13,7 +13,7 @@ import com.example.abdullahkucuk.fruittuin.R;
 
 public class FragmentHelper {
 
-    public static Fragment mFragment = new StartFragment();
+    public static Fragment mFragment;
 
     public static void addFragment(FragmentManager fragmentManager, Fragment fragment) {
         mFragment = fragment;
