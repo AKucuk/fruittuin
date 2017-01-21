@@ -14,6 +14,11 @@ import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
 import com.example.abdullahkucuk.fruittuin.R;
 import com.example.abdullahkucuk.fruittuin.Services.GoogleDistanceMatrix;
 
+import java.util.Date;
+
+import static com.example.abdullahkucuk.fruittuin.Activities.MainActivity.getPostRef;
+import static com.example.abdullahkucuk.fruittuin.Activities.MainActivity.mFirebaseAnalytics;
+
 /**
  * Created by abdullah.kucuk on 6-11-2016.
  */
@@ -40,6 +45,11 @@ public class LocationTask extends AsyncTask<String, Void, GoogleDistanceMatrix> 
                     .show();
             return;
         }
+
+        getPostRef().child("location").setValue(googleDistanceMatrix.getDestination());
+        getPostRef().child("date_end").setValue(new Date().toString());
+        mFirebaseAnalytics.setUserProperty("end_date", new Date().toString());
+        mFirebaseAnalytics.setUserProperty("location", googleDistanceMatrix.getDestination());
 
         String reply;
         if(googleDistanceMatrix.getDestination().equalsIgnoreCase("Amsterdam")){

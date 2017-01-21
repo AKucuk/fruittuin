@@ -21,6 +21,13 @@ import com.example.abdullahkucuk.fruittuin.Helpers.NetworkHelper;
 import com.example.abdullahkucuk.fruittuin.Models.UserModel;
 import com.example.abdullahkucuk.fruittuin.R;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.example.abdullahkucuk.fruittuin.Activities.MainActivity.getPostRef;
+import static com.example.abdullahkucuk.fruittuin.Activities.MainActivity.mFirebaseAnalytics;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -93,6 +100,12 @@ public class PromptAgeFragment extends Fragment {
                 }
 
                 userModel.leeftijd = leeftijd;
+
+                getPostRef().child("age").setValue(input.toString());
+                getPostRef().child("date_end").setValue(new Date().toString());
+                mFirebaseAnalytics.setUserProperty("end_date", new Date().toString());
+                mFirebaseAnalytics.setUserProperty("age", input.toString());
+
 
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("userModel", userModel);

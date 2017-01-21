@@ -3,7 +3,6 @@ package com.example.abdullahkucuk.fruittuin.Activities;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,28 +14,45 @@ import android.view.MenuItem;
 
 import com.example.abdullahkucuk.fruittuin.Enumerations.FragmentEnum;
 import com.example.abdullahkucuk.fruittuin.Factory.FragmentManager;
-import com.example.abdullahkucuk.fruittuin.Fragments.ContactFragment;
-import com.example.abdullahkucuk.fruittuin.Fragments.FruittuinVanWestFragment;
-import com.example.abdullahkucuk.fruittuin.Fragments.OpeningstijdenFragment;
-import com.example.abdullahkucuk.fruittuin.Fragments.PlattegrondFragment;
-import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.StartFragment;
 import com.example.abdullahkucuk.fruittuin.Global.Memory;
 import com.example.abdullahkucuk.fruittuin.Global.Session;
 import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
 import com.example.abdullahkucuk.fruittuin.R;
 import com.firebase.client.Firebase;
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    public static FirebaseAnalytics mFirebaseAnalytics;
+    public static String uniqueFirebaseId;
+    public static Firebase newPostRef;
     FragmentManager fragmentManager = new FragmentManager();
+
+    public static Firebase getPostRef() {
+
+        if (newPostRef == null) {
+            Firebase ref = new Firebase("https://fruittuinwestapp.firebaseio.com/android/saving-data/fruittuinwestapp");
+            Firebase postRef = ref.child("users");
+            newPostRef = postRef.push();
+            uniqueFirebaseId = newPostRef.getKey();
+            newPostRef.child("date_start").setValue(new Date().toString());
+            mFirebaseAnalytics.setUserId(uniqueFirebaseId);
+            mFirebaseAnalytics.setUserProperty("start_date", new Date().toString());
+        }
+        return newPostRef;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(this);
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
 
         setContentView(R.layout.activity_main_drawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -136,3 +152,4 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 }
+

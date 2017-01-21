@@ -9,39 +9,42 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="176dp"
-            android:layout_height="268dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginStart="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/txtTemperatuur"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintVertical_bias="0.78"
-            app:srcCompat="@drawable/map_nederland"
-            app:layout_constraintTop_toBottomOf="@+id/textViewPromptAge"
-            android:layout_marginBottom="8dp" />
+
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="140dp"
             android:layout_height="169dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/txtTemperatuur"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintVertical_bias="0.13"
-            app:srcCompat="@drawable/bee_fragment_prompt_age"
-            app:layout_constraintTop_toBottomOf="@+id/textViewPromptAge"
             android:layout_marginBottom="8dp"
-            app:layout_constraintLeft_toRightOf="@+id/imageView2" />
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnTemperatuur"
+            app:layout_constraintHorizontal_bias="0.94"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewPromptAge"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/bee_fragment_prompt_age" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="147dp"
+            android:layout_height="143dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/txtTemperatuur"
+            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewPromptAge"
+            app:layout_constraintVertical_bias="0.81"
+            app:srcCompat="@drawable/map_nederland" />
 
         <TextView
             android:id="@+id/textViewPromptAge"
@@ -56,50 +59,45 @@
             android:text="En waar kom je vandaan?"
             android:textAppearance="?android:attr/textAppearanceLarge"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.53"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.05"
-            app:layout_constraintHorizontal_bias="0.53" />
+            app:layout_constraintVertical_bias="0.05" />
 
         <Button
             android:id="@+id/btnTemperatuur"
-            android:layout_width="121dp"
-            android:layout_height="65dp"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
             android:layout_marginBottom="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:text="Volgende"
+            android:theme="@style/MyButton"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.53"
-            app:layout_constraintLeft_toRightOf="@+id/txtTemperatuur"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewPromptAge"
-            app:layout_constraintVertical_bias="0.95" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <EditText
             android:id="@+id/txtTemperatuur"
-            android:layout_width="204dp"
-            android:layout_height="65dp"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/btnTemperatuur"
             app:layout_constraintTop_toBottomOf="@+id/textViewPromptAge"
-            app:layout_constraintVertical_bias="0.95" />
+            app:layout_constraintVertical_bias="1.0" />
+
 
     </android.support.constraint.ConstraintLayout>
 

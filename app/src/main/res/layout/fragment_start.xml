@@ -12,18 +12,23 @@
 
         <TextView
             android:id="@+id/textView11"
-            android:layout_width="289dp"
-            android:layout_height="204dp"
+            android:layout_width="300dp"
+            android:layout_height="202dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="208dp"
             android:text="Hey psssst... jij daar...\n\nIk zie dat je op bezoek bent in de Fruittuin. Heb jij zin om met mij op avontuur te gaan?"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="48dp" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/textStartSpeurtocht"
-            android:layout_width="192dp"
-            android:layout_height="47dp"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="16dp"
@@ -63,18 +68,19 @@
 
         <Button
             android:id="@+id/buttonVolgende"
-            android:layout_width="121dp"
-            android:layout_height="65dp"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginBottom="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginRight="8dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:text="Verzenden"
+            android:theme="@style/MyButton"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintLeft_toLeftOf="parent"
