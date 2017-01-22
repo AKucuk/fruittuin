@@ -22,52 +22,70 @@ import java.util.List;
  * Created by abdullah.kucuk on 13-11-2016.
  */
 
-public class WindDirectionTask extends AsyncTask<String, Void, Luis> {
+public class WindDirectionTask extends AsyncTask<String, Void, WindDirection> {
     PromptWindDirectionFragment promptWindDirectionFragment;
 
     public WindDirectionTask(PromptWindDirectionFragment promptWindDirectionFragment) {
         this.promptWindDirectionFragment = promptWindDirectionFragment;
     }
     @Override
-    protected Luis doInBackground(String... params) {
+    protected WindDirection doInBackground(String... params) {
         String windDirection = params[0];
 
         //Before doing a luis call, try to determine ourself:
         String[] richtingen = {"zuid", "noord", "oost", "west"};
-        if(Arrays.asList(richtingen).contains(windDirection.toLowerCase())) {
-            switch(windDirection.toLowerCase()) {
-                default:
-                    break;
+        for (String richting :
+                richtingen) {
+            if(windDirection.toLowerCase().contains(richting)) {
+                if(richting == "zuid")
+                    return WindDirection.SOUTH;
+                if(richting == "noord")
+                    return WindDirection.NORTH;
+                if(richting == "oost")
+                    return WindDirection.EAST;
+                if(richting == "west")
+                    return WindDirection.WEST;
             }
         }
-
-        return new Luis(promptWindDirectionFragment.getContext(), windDirection);
+        return WindDirection.UNKNOWN;
+        //return new Luis(promptWindDirectionFragment.getContext(), windDirection);
     }
 
     @Override
-    protected void onPostExecute(Luis luis) {
-        List<LuisEntityModel> entities = luis.getEntities();
+    protected void onPostExecute(WindDirection windDirection) {
+        //List<LuisEntityModel> entities = luis.getEntities();
 
-        if(entities.size() == 0) {
+        if(windDirection == WindDirection.UNKNOWN) {
+        //if(entities.size() == 0) {
             Toast.makeText(promptWindDirectionFragment.getContext(), "Ik heb je niet verstaan, typ je zin anders!", Toast.LENGTH_LONG)
                     .show();
             return;
         }
+        switch(windDirection) {
+            case WEST:
+                showImageQuiz();
+                break;
+            default:
+                Toast.makeText(promptWindDirectionFragment.getContext(), "De wind komt van een andere kant, probeer opnieuw!", Toast.LENGTH_LONG)
+                        .show();
+                return;
+        }
 
-        LuisEntityModel entity = entities.get(0);
+    //TODO: Koppel realtime info van Weather API
+
+        /*LuisEntityModel entity = entities.get(0);
 
         WindDirectionModel windRichting = new WindDirectionModel(entity);
         if(!windRichting.isWindDirection()) {
             Toast.makeText(promptWindDirectionFragment.getContext(), "Ik heb je niet verstaan, typ je zin anders!", Toast.LENGTH_LONG)
                     .show();
             return;
-        }
+        }*/
 
         //// TODO: 21-12-2016  Check wind direction and give feedback
         //windRichting.getWindDirection()
 
 
-        showImageQuiz();
     }
 
     private void showImageQuiz() {
