@@ -7,8 +7,10 @@ import com.example.abdullahkucuk.fruittuin.Fragments.ContactFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.FruittuinVanWestFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.OpeningstijdenFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.PlattegrondFragment;
+import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.AcclimatizeFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.PromptLocationFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.PromptRatingFragment;
+import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.PromptTemperatureFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.PromptWindDirectionFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.StartFragment;
 
