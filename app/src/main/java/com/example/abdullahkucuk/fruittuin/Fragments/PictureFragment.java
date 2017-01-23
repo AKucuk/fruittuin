@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
+import com.example.abdullahkucuk.fruittuin.Helpers.KeyboardHelper;
 import com.example.abdullahkucuk.fruittuin.R;
 import com.example.abdullahkucuk.fruittuin.Services.PermissionUtils;
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -124,6 +125,8 @@ public class PictureFragment extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_picture, container, false);
 
+        KeyboardHelper.hideKeyboard(getActivity());
+
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,6 +186,7 @@ public class PictureFragment extends Fragment {
 
     public void startCamera() {
 
+
         if (PermissionUtils.requestPermission(
                 getActivity(),
                 CAMERA_PERMISSIONS_REQUEST,
@@ -224,6 +228,7 @@ public class PictureFragment extends Fragment {
     }
 
     public void uploadImage(Uri uri) {
+
         if (uri != null) {
             try {
                 // scale the image to save on bandwidth
@@ -248,6 +253,10 @@ public class PictureFragment extends Fragment {
     private void callCloudVision(final Bitmap bitmap) throws IOException {
         // Switch text to loading
         //mImageDetails.setText(R.string.loading_message);
+
+        Toast.makeText(getActivity(), R.string.image_wait_message, Toast.LENGTH_LONG).show();
+        fab.setVisibility(View.INVISIBLE);
+
 
         // Do the real work in an async task, because we need to use the network anyway
         new AsyncTask<Object, Void, String>() {
@@ -318,6 +327,9 @@ public class PictureFragment extends Fragment {
                     fab.setVisibility(View.INVISIBLE);
                     btnVolgende.setVisibility(View.VISIBLE);
                 } else if (result == "false") {
+
+                    fab.setVisibility(View.VISIBLE);
+
                     if (numberOfTriesPassed < (numberOfTries - 1)) {
 
 
@@ -339,6 +351,7 @@ public class PictureFragment extends Fragment {
 
                     }
                 } else {
+                    fab.setVisibility(View.VISIBLE);
                     Toast.makeText(getContext(), "Oeps, er is iets misgegaan", Toast.LENGTH_LONG).show();
                 }
             }

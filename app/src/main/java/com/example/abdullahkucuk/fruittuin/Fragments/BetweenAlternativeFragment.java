@@ -2,6 +2,7 @@ package com.example.abdullahkucuk.fruittuin.Fragments;
 
 
 import android.media.Image;
+import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -53,12 +54,14 @@ public class BetweenAlternativeFragment extends Fragment {
             imgSecond.setImageResource(secondImageString);
         } else {
             imgSecond.setVisibility(View.INVISIBLE);
+            imgSecond.setMaxHeight(0);
         }
 
         if (textPartTwo != null) {
             txtSecond.setText(textPartTwo);
         } else {
             txtSecond.setVisibility(View.INVISIBLE);
+            txtSecond.setMaxHeight(0);
         }
 
 

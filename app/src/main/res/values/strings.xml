@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Fruittuin</string>
+    <string name="app_name">Speurtocht App</string>
     <string name="no_internet_connection">Geen internet connectie!</string>
     <string name="introText">Ik zal mij even voorstellen. Ik ben Blije Bij. Ik ben hier in de Fruittuin om superhoning te maken. Maar daarvoor heb ik jouw hulp nodig. Wil jij met mij op avontuur?</string>
     <string name="page_4_text">Wow, dat is oud zeg…Ik kan maar maximaal 2 maanden oud worden.\n\nMijn koningin Isabella kan wel veel ouder worden dan ik; wel 5 jaar.\n\nZe is zo mooi… Ik ben een beetje verliefd op haar.</string>
@@ -8,7 +8,7 @@
 
     <string name="acclimatize_text">Oké, laten we beginnen, hier is je eerste opdracht:\n\nLoop 3 minuten even rond en inventariseer wat er allemaal is. Kijk naar de lucht en geniet van de natuur.</string>
 
-    <string name="picture_fragment_text_raspberry_explanation">Wist je dat frambozen al sinds de middeleeuwen verbouwd worden? Ze smaken ook zo lekker. De framboos is een in heel Europa van nature voorkomende plant, die op open plaatsen in het bos en langs bosranden voorkomt.</string>
+    <string name="picture_fragment_text_raspberry_explanation">Wist je dat frambozen al sinds de middeleeuwen verbouwd worden? Ze smaken ook zo lekker.\n\nDe framboos is een in heel Europa van nature voorkomende plant, die op open plaatsen in het bos en langs bosranden voorkomt.</string>
 
     <string name="picture_fragment_text_chicken_explanation">Wist je dat een kip ongeveer 310 eieren per jaar legt? Erg veel, vind je ook niet?\n\nNiet alle kippen kunnen zo vrij rondlopen. De meeste kippen in Nederland leven hun hele leven in een kippenfabriek, op een heel klein oppervlakte. Zielig hé.\n\nKoop in de winkel biologische kip en eieren, dan weet je dat de kip een fijn leven heeft gehad.</string>
     <string name="picture_fragment_text_chicken">Ik hoorde dat er ook veel andere dieren in de fruittuin leven. Onder andere kippen. Kun jij eens een kip opzoeken en een mooie foto van hem maken?</string>
@@ -16,12 +16,14 @@
     <string name="picture_fragment_text_blackberry_explanation">Bramen zijn een populaire fruitsoort en groeien in landen over de hele wereld. De Grieken en Romeinen, maar ook de Indianen, geloofden al in de geneeskrachtige werking van deze fruitsoort. Al meer dan 2000 jaar worden bramen gebruikt om koorts en darmproblemen te behandelen.\n\nBramen werden in de tijd van de Grieken en Romeinen niet alleen gebruikt als medicijn. Ze werden ook gebruikt als ingrediënt voor bijvoorbeeld taart of jam.\n\nBramen zijn ook zeer gezond! De braam doodt bacteriën in de mond, zorgt voor een gezonde zwangerschap, verbetert motorische en cognitieve vaardigheden, versterkt de botten, stabiliseert de bloedsuikerspiegel, verkleint de kans op hart- en vaatziekten, vermindert de kans op kanker, verbetert de gezondheid van de huid.\n\nStop ze lekker in je toetje!</string>
     <string name="picture_fragment_text_blackberry">En bramen? Die zijn er ook volgens Zzzaza. Kun je deze ook fotograferen?</string>
 
-    <string name="picture_fragment_text_cherry_explanation">Er wordt beweerd dat kersen in het jaar 600 voor Christus al erg geliefd waren in China als lekkernij voor de rijken. Later werden kersen door de Romeinen meegenomen naar andere landen, waaronder Engeland. Toen deze fruitsoort in 1600 door de Engelse kolonisten naar Noord-Amerika werd meegenomen, nam de populariteit nog meer toe./n/nWist je dat kersen erg gezond zijn? De kers helpt je om beter te slapen, beschermt tegen kanker, verkleint de kans op diabetes, reguleert de bloeddruk, vermindert de klachten door jicht (gewrichtsontsteking) en helpt tegen spierpijn./n/nEn het is nog lekker ook!</string>
+    <string name="picture_fragment_text_cherry_explanation">Er wordt beweerd dat kersen in het jaar 600 voor Christus al erg geliefd waren in China als lekkernij voor de rijken.\n\nLater werden kersen door de Romeinen meegenomen naar andere landen, waaronder Engeland. Toen deze fruitsoort in 1600 door de Engelse kolonisten naar Noord-Amerika werd meegenomen, nam de populariteit nog meer toe.\n\nWist je dat kersen erg gezond zijn? De kers helpt je om beter te slapen, beschermt tegen kanker, verkleint de kans op diabetes, reguleert de bloeddruk, vermindert de klachten door jicht (gewrichtsontsteking) en helpt tegen spierpijn.\n\nEn het is nog lekker ook!</string>
     <string name="picture_fragment_text_cherry">Dit smaakt naar meer. Kun je op zoek gaan naar kersen, en hier een foto van maken?</string>
 
     <string name="picture_fragment_text_raspberry">Nu ben ik toch wel benieuwd hoe de vruchten er uit zien. Als het goed is worden er ook frambozen verbouwd in de Fruittuin.\n\nKun je deze eens opzoeken en hier een foto van maken?</string>
     <string name="picture_fragment_text_paardenbloem">Om honing te maken heb ik heel veel bloemen nodig. Ik ben dol op paardenbloemen...\n\nKun jij voor mij een paardenbloem zoeken, en hier een foto van maken?</string>
 
+    <string name="finish_fragment">Wow blijkbaar kloppen de verhalen die Zzzazaa mij vertelde; dit klinkt warempel echt als een paradijs. Wat fijn dat je me geholpen hebt, ik vond het erg leuk om met jou op avontuur te gaan in de fruittuin!</string>
+    <string name="rating_fragment">Ik ben ook wel beniewd wat jij van de speurtocht vond? Geef een rating en feedback!</string>
     <string name="picture_fragment_text_paardenbloem_proeven">Proef eens van de bladeren van de paardenbloem. Hoe smaakt dit?</string>
 
 
@@ -48,4 +50,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_google_spreadsheet">GoogleSpreadsheetActivity</string>
+    <string name="image_wait_message">Een momentje geduld aub...</string>
 </resources>

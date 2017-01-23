@@ -18,10 +18,13 @@
     <!--<android:uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
     <!---->
     <application
+
         android:allowBackup="true"
         android:background="@color/white"
-        android:icon="@mipmap/ic_launcher"
+        android:hardwareAccelerated="false"
+        android:icon="@drawable/biglogo"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity

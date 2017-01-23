@@ -38,9 +38,10 @@ public class LocationTask extends AsyncTask<String, Void, GoogleDistanceMatrix> 
 
     @Override
     protected void onPostExecute(GoogleDistanceMatrix googleDistanceMatrix) {
-        if(googleDistanceMatrix.getStatus() == GoogleDistanceMatrix.Status.NOT_FOUND) {
+
+        if (googleDistanceMatrix.getStatus() == null) {
             Toast.makeText(promptLocationFragment.getContext(),
-                    String.format("Ik ken [%s] helemaal niet... Heb je het misschien fout getypt?", googleDistanceMatrix.getDestination()),
+                    String.format("Ik ken %s helemaal niet... Heb je het misschien fout getypt?", googleDistanceMatrix.getDestination()),
                     Toast.LENGTH_LONG)
                     .show();
             return;
@@ -67,7 +68,6 @@ public class LocationTask extends AsyncTask<String, Void, GoogleDistanceMatrix> 
 
         Session session = Memory.getInstance();
         session.setLocation(googleDistanceMatrix.getDestination());
-
 
         Fragment fragment = new AcclimatizeFragment();
         fragment.setArguments(bundle);

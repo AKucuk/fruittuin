@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "788771814885",
+    "firebase_url": "https://fruittuinwestapp.firebaseio.com",
+    "project_id": "fruittuinwestapp",
+    "storage_bucket": "fruittuinwestapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:788771814885:android:775af4fe632e8e89",
+        "android_client_info": {
+          "package_name": "com.example.abdullahkucuk.fruittuin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "788771814885-p1p7670c1ri0kvvn8c1tstvtii7npl4t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.abdullahkucuk.fruittuin",
+            "certificate_hash": "2D2EBD7B61B1845C2982E3E862B93F6E664933DF"
+          }
+        },
+        {
+          "client_id": "788771814885-23iceualdl4665cslmgovro9o6tdu3or.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "788771814885-416no56hvvt19n7kgfhb3612fsvq8un7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtsQS1pOVqLcbntRSS_tTL40ZlVPoT9VU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "788771814885-23iceualdl4665cslmgovro9o6tdu3or.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

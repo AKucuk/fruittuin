@@ -10,13 +10,10 @@ import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.ClayFra
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.GroundtypeFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.ProefPaardenbloemFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.PromptWindDirectionFragment;
-import com.example.abdullahkucuk.fruittuin.Models.LuisEntityModel;
-import com.example.abdullahkucuk.fruittuin.Models.WindDirectionModel;
+import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.PromptRatingFragment;
 import com.example.abdullahkucuk.fruittuin.R;
-import com.example.abdullahkucuk.fruittuin.Services.Luis;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by abdullah.kucuk on 13-11-2016.
@@ -89,10 +86,18 @@ public class WindDirectionTask extends AsyncTask<String, Void, WindDirection> {
     }
 
     private void showImageQuiz() {
+
+        PromptRatingFragment promptRatingFragment = new PromptRatingFragment();
+
+        //successorChickenFragment:
+        BetweenAlternativeFragment finishFragment = new BetweenAlternativeFragment();
+        finishFragment.setTextPartOne(promptWindDirectionFragment.getResources().getString(R.string.finish_fragment));
+        finishFragment.setFragment(promptRatingFragment);
+
         //successorChickenFragment:
         BetweenAlternativeFragment successorChickenFragment = new BetweenAlternativeFragment();
         successorChickenFragment.setTextPartOne(promptWindDirectionFragment.getResources().getString(R.string.picture_fragment_text_chicken_explanation));
-        //successorChickenFragment.setFragment(chickenFragment);
+        successorChickenFragment.setFragment(finishFragment);
 
         //chickenFragment
         PictureFragment chickenFragment = new PictureFragment();
@@ -117,7 +122,7 @@ public class WindDirectionTask extends AsyncTask<String, Void, WindDirection> {
 
         //successorCherryFragment:
         BetweenAlternativeFragment successorCherryFragment = new BetweenAlternativeFragment();
-        successorCherryFragment.setTextPartOne(promptWindDirectionFragment.getResources().getString(R.string.picture_fragment_text_raspberry_explanation));
+        successorCherryFragment.setTextPartOne(promptWindDirectionFragment.getResources().getString(R.string.picture_fragment_text_cherry_explanation));
         successorCherryFragment.setFragment(blackBerryFragment);
 
         //raspBerryFragment
@@ -166,15 +171,5 @@ public class WindDirectionTask extends AsyncTask<String, Void, WindDirection> {
         pictureFragment.setToFindEnglish(Arrays.asList("dandelion", "flower"));
         pictureFragment.setNumberOfTries(4);
         promptWindDirectionFragment.getFragmentManager().beginTransaction().replace(R.id.fragment_frame, pictureFragment).commit();
-
-        //apple
-//        PictureFragment pictureFragment = new PictureFragment();
-//        pictureFragment.setFragment(fragment);
-//        pictureFragment.setMessage(promptWindDirectionFragment.getResources().getString(R.string.picture_fragment_text_apple));
-//        pictureFragment.setToFindDutch(Arrays.asList("appel", "fruit"));
-//        pictureFragment.setToFindEnglish(Arrays.asList("apple", "fruit"));
-//        pictureFragment.setNumberOfTries(4);
-//        ft.beginTransaction().replace(R.id.fragment_frame, pictureFragment).commit();
-
     }
 }
