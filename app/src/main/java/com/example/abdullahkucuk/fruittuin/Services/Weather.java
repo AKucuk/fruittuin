@@ -26,6 +26,35 @@ public class Weather {
     float temperature;
     float windDegree;
 
+    public Weather(Context context, String location) {
+        this.context = context;
+
+        String data = getWeatherData(location);
+
+        if (data != null) {
+            try {
+                JSONObject json = new JSONObject(data);
+                JSONObject weather = getObject("main", json);
+                //return getFloat("temp", weather);
+                temperature = getFloat("temp", weather);
+
+                JSONObject wind = getObject("wind", json);
+                windDegree = getFloat("deg", wind);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private static JSONObject getObject(String tagName, JSONObject jObj) throws JSONException {
+        JSONObject subObj = jObj.getJSONObject(tagName);
+        return subObj;
+    }
+
+    private static float getFloat(String tagName, JSONObject jObj) throws JSONException {
+        return (float) jObj.getDouble(tagName);
+    }
+
     public WindDirection getWindDirection()
     {
         WindDirection directions[] = {
@@ -41,6 +70,7 @@ public class Weather {
         };
         return directions[ (int)Math.round((  ((double)windDegree % 360) / 45)) ];
     }
+
     public WindDirection getRoughWindDirection()
     {
         WindDirection directions[] = {
@@ -57,9 +87,11 @@ public class Weather {
         return directions[ (int)Math.round((  ((double)windDegree % 360) / 45)) ];
 
     }
+
     public float getKelvin(){
         return temperature;
     }
+
     public float getCelcius() {
         return temperature - 273.15f;
     }
@@ -67,24 +99,6 @@ public class Weather {
     public float getFahreinheit() {
         return 9 * temperature / 5 + 32;
     }
-
-    public Weather(Context context, String location) {
-        this.context = context;
-
-        String data = getWeatherData(location);
-        try {
-            JSONObject json = new JSONObject(data);
-            JSONObject weather = getObject("main", json);
-            //return getFloat("temp", weather);
-            temperature = getFloat("temp", weather);
-
-            JSONObject wind = getObject("wind", json);
-            windDegree = getFloat("deg", wind);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     private String getWeatherData(String location) {
         HttpURLConnection con = null ;
@@ -102,7 +116,15 @@ public class Weather {
 
             // Let's read the response
             StringBuffer buffer = new StringBuffer();
+
+            while (con.getResponseCode() != 200) {
+                con = (HttpURLConnection) (new URL(BASE_URL + location + "&appid=" + appId)).openConnection();
+                con.connect();
+            }
+
             is = con.getInputStream();
+
+            //is = con.getResponseCode();
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             String line = null;
             while ( (line = br.readLine()) != null )
@@ -122,15 +144,6 @@ public class Weather {
 
         return null;
 
-    }
-
-    private static JSONObject getObject(String tagName, JSONObject jObj) throws JSONException {
-        JSONObject subObj = jObj.getJSONObject(tagName);
-        return subObj;
-    }
-
-    private static float getFloat(String tagName, JSONObject jObj) throws JSONException {
-        return (float) jObj.getDouble(tagName);
     }
 
     public String getFormattedOutput(Float f) {

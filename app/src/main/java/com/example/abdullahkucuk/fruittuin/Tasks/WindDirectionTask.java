@@ -62,15 +62,24 @@ public class WindDirectionTask extends AsyncTask<String, Void, WindDirection> {
         }
 
         Weather weather = new Weather(promptWindDirectionFragment.getContext(), "Amsterdam");
-        switch(windDirection) {
-            case weather.getRoughWindDirection():
-                showImageQuiz();
-                break;
-            default:
-                Toast.makeText(promptWindDirectionFragment.getContext(), "De wind komt van een andere kant, probeer opnieuw!", Toast.LENGTH_LONG)
-                        .show();
-                return;
+
+        if (windDirection == weather.getRoughWindDirection()) {
+            showImageQuiz();
+        } else {
+            Toast.makeText(promptWindDirectionFragment.getContext(), "De wind komt van een andere kant, probeer opnieuw!", Toast.LENGTH_LONG)
+                    .show();
+            return;
         }
+
+//        switch(windDirection) {
+//            case weather.getRoughWindDirection():
+//                showImageQuiz();
+//                break;
+//            default:
+//                Toast.makeText(promptWindDirectionFragment.getContext(), "De wind komt van een andere kant, probeer opnieuw!", Toast.LENGTH_LONG)
+//                        .show();
+//                return;
+//        }
 
     //TODO: Koppel realtime info van Weather API
 
