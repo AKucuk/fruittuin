@@ -21,48 +21,25 @@ import java.util.Arrays;
  * Created by abdullah.kucuk on 13-11-2016.
  */
 
-public class WindDirectionTask extends AsyncTask<String, Void, WindDirection> {
+public class WindDirectionTask extends AsyncTask<WindDirection, Void, WindDirection> {
     PromptWindDirectionFragment promptWindDirectionFragment;
+    WindDirection enteredWindDirection;
 
     public WindDirectionTask(PromptWindDirectionFragment promptWindDirectionFragment) {
         this.promptWindDirectionFragment = promptWindDirectionFragment;
     }
     @Override
-    protected WindDirection doInBackground(String... params) {
-        String windDirection = params[0];
+    protected WindDirection doInBackground(WindDirection... params) {
+        enteredWindDirection = params[0];
 
-        //Before doing a luis call, try to determine ourself:
-        String[] richtingen = {"zuid", "noord", "oost", "west"};
-        for (String richting :
-                richtingen) {
-            if(windDirection.toLowerCase().contains(richting)) {
-                if(richting == "zuid")
-                    return WindDirection.SOUTH;
-                if(richting == "noord")
-                    return WindDirection.NORTH;
-                if(richting == "oost")
-                    return WindDirection.EAST;
-                if(richting == "west")
-                    return WindDirection.WEST;
-            }
-        }
-        return WindDirection.UNKNOWN;
+        return new Weather(promptWindDirectionFragment.getContext(), "Amsterdam").getRoughWindDirection();
         //return new Luis(promptWindDirectionFragment.getContext(), windDirection);
     }
 
     @Override
     protected void onPostExecute(WindDirection windDirection) {
         //List<LuisEntityModel> entities = luis.getEntities();
-
-        if(windDirection == WindDirection.UNKNOWN) {
-        //if(entities.size() == 0) {
-            Toast.makeText(promptWindDirectionFragment.getContext(), "Ik heb je niet verstaan, typ je zin anders!", Toast.LENGTH_LONG)
-                    .show();
-            return;
-        }
-
-        Weather weather = new Weather(promptWindDirectionFragment.getContext(), "Amsterdam");
-        if(windDirection == weather.getRoughWindDirection()) {
+        if(enteredWindDirection == windDirection) {
             showImageQuiz();
         }
         else {

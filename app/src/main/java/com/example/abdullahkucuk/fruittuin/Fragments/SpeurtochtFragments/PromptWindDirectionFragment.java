@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.abdullahkucuk.fruittuin.Enumerations.WindDirection;
 import com.example.abdullahkucuk.fruittuin.Helpers.NetworkHelper;
 import com.example.abdullahkucuk.fruittuin.Helpers.TimeHelper;
 import com.example.abdullahkucuk.fruittuin.Models.LuisEntityModel;
@@ -66,9 +67,27 @@ public class PromptWindDirectionFragment extends Fragment {
                     return;
                 }
 
-                new WindDirectionTask(promptWindDirectionFragment).execute(windDirection);
+                WindDirection wd = WindDirection.UNKNOWN;
+                String[] richtingen = {"zuid", "noord", "oost", "west"};
+                for (String richting : richtingen) {
+                    if(windDirection.toLowerCase().contains(richting)) {
+                        if(richting == "zuid")
+                            wd = WindDirection.SOUTH;
+                        if(richting == "noord")
+                            wd = WindDirection.NORTH;
+                        if(richting == "oost")
+                            wd = WindDirection.EAST;
+                        if(richting == "west")
+                            wd = WindDirection.WEST;
+                    }
+                }
 
-
+                if(wd == WindDirection.UNKNOWN) {
+                    Toast.makeText(getActivity().getApplicationContext(), "Ik heb je niet verstaan, typ je zin anders!", Toast.LENGTH_LONG)
+                            .show();
+                    return;
+                }
+                new WindDirectionTask(promptWindDirectionFragment).execute(wd);
             }
         });
 
