@@ -19,7 +19,7 @@ import java.net.URL;
  * Created by abdullah.kucuk on 12-11-2016.
  */
 
-public class Weather {
+public class Weather {  
     private static String BASE_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
 
     Context context;
