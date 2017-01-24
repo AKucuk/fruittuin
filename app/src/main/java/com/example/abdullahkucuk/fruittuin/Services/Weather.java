@@ -128,11 +128,7 @@ public class Weather {
             }
 
             is = con.getInputStream();
-
-<<<<<<< HEAD
-=======
-            //is = con.getResponseCode();
->>>>>>> 5775d09efad23fa319bd711e1a1c5b7dfba8c2dc
+            
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             String line = null;
             while ( (line = br.readLine()) != null )
