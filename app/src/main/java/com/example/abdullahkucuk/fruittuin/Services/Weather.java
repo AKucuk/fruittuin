@@ -3,6 +3,7 @@ package com.example.abdullahkucuk.fruittuin.Services;
 import android.content.Context;
 import android.content.res.Resources;
 
+import com.example.abdullahkucuk.fruittuin.Enumerations.WindDirection;
 import com.example.abdullahkucuk.fruittuin.R;
 
 import org.json.JSONException;
@@ -23,7 +24,39 @@ public class Weather {
 
     Context context;
     float temperature;
+    float windDegree;
 
+    public WindDirection getWindDirection()
+    {
+        WindDirection directions[] = {
+                WindDirection.NORTH,
+                WindDirection.NORTH_EAST,
+                WindDirection.EAST,
+                WindDirection.SOUTH_EAST,
+                WindDirection.SOUTH,
+                WindDirection.SOUTH_WEST,
+                WindDirection.WEST,
+                WindDirection.NORTH_WEST,
+                WindDirection.NORTH
+        };
+        return directions[ (int)Math.round((  ((double)windDegree % 360) / 45)) ];
+    }
+    public WindDirection getRoughWindDirection()
+    {
+        WindDirection directions[] = {
+                WindDirection.NORTH,
+                WindDirection.EAST,
+                WindDirection.EAST,
+                WindDirection.SOUTH,
+                WindDirection.SOUTH,
+                WindDirection.WEST,
+                WindDirection.WEST,
+                WindDirection.NORTH,
+                WindDirection.NORTH
+        };
+        return directions[ (int)Math.round((  ((double)windDegree % 360) / 45)) ];
+
+    }
     public float getKelvin(){
         return temperature;
     }
@@ -44,6 +77,9 @@ public class Weather {
             JSONObject weather = getObject("main", json);
             //return getFloat("temp", weather);
             temperature = getFloat("temp", weather);
+
+            JSONObject wind = getObject("wind", json);
+            windDegree = getFloat("deg", wind);
         } catch (JSONException e) {
             e.printStackTrace();
         }

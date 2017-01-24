@@ -13,6 +13,7 @@ import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.PromptW
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.PromptRatingFragment;
 import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
 import com.example.abdullahkucuk.fruittuin.R;
+import com.example.abdullahkucuk.fruittuin.Services.Weather;
 
 import java.util.Arrays;
 
@@ -59,8 +60,10 @@ public class WindDirectionTask extends AsyncTask<String, Void, WindDirection> {
                     .show();
             return;
         }
+
+        Weather weather = new Weather(promptWindDirectionFragment.getContext(), "Amsterdam");
         switch(windDirection) {
-            case WEST:
+            case weather.getRoughWindDirection():
                 showImageQuiz();
                 break;
             default:
