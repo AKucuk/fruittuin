@@ -23,11 +23,21 @@ public class WeatherTask extends AsyncTask<String, Void, Weather> {
     @Override
     protected Weather doInBackground(String... params) {
         String location = params[0];
+        //return new Weather(promptTemperatureFragment.getContext(), location);
         return new Weather(promptTemperatureFragment.getContext(), location);
     }
 
     @Override
     protected void onPostExecute(Weather weather) {
+
+        if (weather == null) {
+            Toast.makeText(promptTemperatureFragment.getContext(),
+                    "De connectie haperde, probeer het opnieuw",
+                    Toast.LENGTH_LONG)
+                    .show();
+            return;
+        }
+
         Float f = weather.getCelcius();
 
         Context context = promptTemperatureFragment.getContext();
