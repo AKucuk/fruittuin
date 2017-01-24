@@ -100,9 +100,15 @@ public class Weather {
             con.setDoOutput(true);
             con.connect();
 
+            while(con.getResponseCode() != 200) {
+                con = (HttpURLConnection) ( new URL(BASE_URL + location + "&appid=" + appId)).openConnection();
+                con.connect();
+            }
+
             // Let's read the response
             StringBuffer buffer = new StringBuffer();
             is = con.getInputStream();
+
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             String line = null;
             while ( (line = br.readLine()) != null )
