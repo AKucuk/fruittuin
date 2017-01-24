@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.abdullahkucuk.fruittuin.Fragments.BetweenFragment;
 import com.example.abdullahkucuk.fruittuin.Global.Memory;
 import com.example.abdullahkucuk.fruittuin.Global.Session;
 import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
@@ -22,8 +21,6 @@ import com.example.abdullahkucuk.fruittuin.Models.UserModel;
 import com.example.abdullahkucuk.fruittuin.R;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 import static com.example.abdullahkucuk.fruittuin.Activities.MainActivity.getPostRef;
 import static com.example.abdullahkucuk.fruittuin.Activities.MainActivity.mFirebaseAnalytics;

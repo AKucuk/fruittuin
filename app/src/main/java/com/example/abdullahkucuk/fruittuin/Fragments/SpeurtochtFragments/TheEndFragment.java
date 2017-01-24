@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.abdullahkucuk.fruittuin.Helpers.KeyboardHelper;
 import com.example.abdullahkucuk.fruittuin.R;
 
 /**
@@ -24,7 +25,12 @@ public class TheEndFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_the_end, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_the_end, container, false);
+
+        KeyboardHelper.hideKeyboard(getActivity());
+
+        return view;
     }
 
 }

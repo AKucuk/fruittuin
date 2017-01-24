@@ -1,4 +1,4 @@
-package com.example.abdullahkucuk.fruittuin.Fragments;
+package com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments;
 
 
 import android.media.Image;

@@ -4,11 +4,10 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.example.abdullahkucuk.fruittuin.Fragments.BetweenFragment;
+import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.BetweenFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.PromptTemperatureFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.PromptWindDirectionFragment;
 import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
-import com.example.abdullahkucuk.fruittuin.R;
 import com.example.abdullahkucuk.fruittuin.Services.Weather;
 
 /**

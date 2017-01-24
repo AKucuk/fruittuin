@@ -22,7 +22,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             app:layout_constraintBottom_toTopOf="@+id/btnTemperatuur"
-            app:layout_constraintHorizontal_bias="0.94"
+            app:layout_constraintHorizontal_bias="0.99"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewPromptAge"
@@ -39,11 +39,11 @@
             android:layout_marginRight="16dp"
             android:layout_marginStart="16dp"
             app:layout_constraintBottom_toTopOf="@+id/txtTemperatuur"
-            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintHorizontal_bias="0.06"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewPromptAge"
-            app:layout_constraintVertical_bias="0.81"
+            app:layout_constraintVertical_bias="0.8"
             app:srcCompat="@drawable/map_nederland" />
 
         <TextView

@@ -4,13 +4,14 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.example.abdullahkucuk.fruittuin.Enumerations.WindDirection;
-import com.example.abdullahkucuk.fruittuin.Fragments.BetweenAlternativeFragment;
-import com.example.abdullahkucuk.fruittuin.Fragments.PictureFragment;
+import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.BetweenAlternativeFragment;
+import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.PictureFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.ClayFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.GroundtypeFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.ProefPaardenbloemFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.PromptWindDirectionFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.PromptRatingFragment;
+import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
 import com.example.abdullahkucuk.fruittuin.R;
 
 import java.util.Arrays;
@@ -170,6 +171,7 @@ public class WindDirectionTask extends AsyncTask<String, Void, WindDirection> {
         pictureFragment.setToFindDutch(Arrays.asList("paardenbloem", "bloem"));
         pictureFragment.setToFindEnglish(Arrays.asList("dandelion", "flower"));
         pictureFragment.setNumberOfTries(4);
-        promptWindDirectionFragment.getFragmentManager().beginTransaction().replace(R.id.fragment_frame, pictureFragment).commit();
+
+        FragmentHelper.addFragment(promptWindDirectionFragment.getFragmentManager(), pictureFragment);
     }
 }

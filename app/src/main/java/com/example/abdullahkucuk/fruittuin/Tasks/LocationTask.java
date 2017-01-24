@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.widget.Toast;
 
-import com.example.abdullahkucuk.fruittuin.Fragments.BetweenFragment;
+import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.BetweenFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.AcclimatizeFragment;
 import com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.PromptLocationFragment;
 import com.example.abdullahkucuk.fruittuin.Global.Memory;
@@ -25,6 +25,7 @@ import static com.example.abdullahkucuk.fruittuin.Activities.MainActivity.mFireb
 
 public class LocationTask extends AsyncTask<String, Void, GoogleDistanceMatrix> {
     PromptLocationFragment promptLocationFragment;
+    String durationText;
 
     public LocationTask(PromptLocationFragment promptLocationFragment){
         this.promptLocationFragment = promptLocationFragment;
@@ -57,10 +58,14 @@ public class LocationTask extends AsyncTask<String, Void, GoogleDistanceMatrix> 
             reply = "Hah! Dan woon jij niet zo heeeel ver van hier!";
         }
         else {
+
+            durationText = googleDistanceMatrix.getDurationText().replaceAll("hours", "uur");
+            durationText = googleDistanceMatrix.getDurationText().replaceAll("mins", "minuten");
+
             reply = String.format("Ah! Sisi de Sprinkhaan woont in %s! Dat is %s van hier vandaan en wel %s met de auto!"
             , googleDistanceMatrix.getDestination()
             , googleDistanceMatrix.getDistanceText()
-            , googleDistanceMatrix.getDurationText());
+                    , durationText);
         }
 
         Bundle bundle = new Bundle();

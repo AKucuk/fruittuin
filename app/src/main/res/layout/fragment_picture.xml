@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.abdullahkucuk.fruittuin.Fragments.PictureFragment">
+    tools:context="com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.PictureFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -12,14 +12,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="1">
 
             <ImageView
                 android:id="@+id/imageView5"
-                android:layout_width="112dp"
+                android:layout_width="144dp"
                 android:layout_height="100dp"
                 android:layout_gravity="right"
                 android:layout_margin="8dp"
+                android:layout_weight="0.55"
                 app:srcCompat="@drawable/x33888080" />
 
             <TextView
