@@ -45,6 +45,7 @@ public class StartFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_start, container, false);
 
         textStartSpeurtocht = (EditText) view.findViewById(R.id.textStartSpeurtocht);
+        textStartSpeurtocht.clearFocus();
         buttonVolgende = (Button) view.findViewById(R.id.buttonVolgende);
 
         buttonVolgende.setOnClickListener(new View.OnClickListener() {

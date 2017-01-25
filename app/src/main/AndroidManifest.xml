@@ -31,7 +31,8 @@
             android:name=".Activities.MainActivity"
             android:label="Speurtocht app"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity android:name=".Activities.LoadingScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
