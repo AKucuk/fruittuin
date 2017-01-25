@@ -1,9 +1,17 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.ProefPaardenbloemFragment">
+
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,8 +23,11 @@
             android:layout_width="109dp"
             android:layout_height="118dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/fragment_proef_paardenbloem" />
@@ -25,11 +36,16 @@
             android:id="@+id/txtQuestion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="Proef eens van de bladeren van de paardenbloem. Hoe smaakt dit?"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            app:layout_constraintTop_toBottomOf="@+id/imgProefPaardenbloem"
-            tools:layout_editor_absoluteX="0dp" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgProefPaardenbloem" />
 
 
         <TextView
@@ -112,4 +128,6 @@
             app:layout_constraintVertical_bias="1.0" />
     </android.support.constraint.ConstraintLayout>
 
-</FrameLayout>
+
+    </FrameLayout>
+</ScrollView>

@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.abdullahkucuk.fruittuin.Constants.Intents;
 import com.example.abdullahkucuk.fruittuin.Helpers.FragmentHelper;
+import com.example.abdullahkucuk.fruittuin.Helpers.KeyboardHelper;
 import com.example.abdullahkucuk.fruittuin.Helpers.NetworkHelper;
 import com.example.abdullahkucuk.fruittuin.Models.IntentModel;
 import com.example.abdullahkucuk.fruittuin.R;

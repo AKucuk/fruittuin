@@ -24,7 +24,6 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                app:layout_constraintHorizontal_bias="0.96"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -46,7 +45,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgBee"
-                app:layout_constraintVertical_bias="0.1" />
+                app:layout_constraintVertical_bias="0.060000002" />
 
             <RatingBar
                 android:id="@+id/ratingbar"

@@ -1,15 +1,16 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.abdullahkucuk.fruittuin.Fragments.FruittuinVanWestFragment">
-
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -81,11 +82,10 @@ Check Fruittuinvanwest.nl om te zien wat er te oogsten is én of er extra activi
                     android:layout_height="wrap_content"
                     android:text="In Fruittuin van West staan, op een relatief klein oppervlak, ontzettend veel verschillende soorten fruit en wat typische groenten. Dit hebben we gedaan om de bezoekers zo lang mogelijk de kans te geven ZELF te oogsten. De gewassen buiten zijn natuurlijk seizoensgebonden maar straks kan je het hele jaar door “binnen” witlof en shiitakes oogsten. De oogstkalender geeft je een goed beeld van de enorme diversiteit. Omdat Wil al sinds 1984 fruitteler is, hebben we op dat vlak het meeste kennis en ervaring. De rassen die we hebben geplant zijn door ons vooral uitgekozen op smaak, karakter en weerbaarheid tegen ziektes (hoe goed ze biologisch te telen zijn). Ons fruit en de groenten zien er ook nog eens prachtig uit; maar dat is niet waar het ons om gaat." />
 
-
             </LinearLayout>
-
 
         </RelativeLayout>
 
-    </ScrollView>
 </FrameLayout>
+
+</ScrollView>

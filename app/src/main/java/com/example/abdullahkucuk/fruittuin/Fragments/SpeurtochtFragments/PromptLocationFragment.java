@@ -61,7 +61,7 @@ public class PromptLocationFragment extends Fragment {
                     return;
                 }
 
-                String locatie = txtLocatie.getText().toString();
+                String locatie = txtLocatie.getText().toString().trim();
                 if(locatie.isEmpty()) {
                     Toast.makeText(getActivity().getApplicationContext(), "Vul je locatie in, zodat we verder kunnen...", Toast.LENGTH_LONG)
                             .show();

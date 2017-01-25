@@ -1,9 +1,17 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.abdullahkucuk.fruittuin.Fragments.SpeurtochtFragments.PromptAgeFragment">
+
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -11,21 +19,19 @@
 
         <TextView
             android:id="@+id/textViewPromptAge"
-            android:layout_width="317dp"
-            android:layout_height="220dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="80dp"
             android:layout_marginEnd="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="40dp"
-            android:text="Wat een mooie\nnaam heb je, {name}!\n\nIk vind het erg leuk om kennis met je te maken. Ik ben al twee en halve week oud.\n\nHoe oud ben jij eigenlijk?"
+            android:text="Wat een mooie naam heb je, {name}!\n\nIk vind het erg leuk om kennis met je te maken. Ik ben al twee en halve week oud.\n\nHoe oud ben jij eigenlijk?"
             android:textAppearance="?android:attr/textAppearanceLarge"
             app:layout_constraintBottom_toTopOf="@+id/txtTemperatuur"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.94" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
         <Button
             android:id="@+id/btnTemperatuur"
@@ -61,21 +67,23 @@
 
         <ImageView
             android:id="@+id/imageView6"
-            android:layout_width="140dp"
-            android:layout_height="169dp"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
             android:layout_marginEnd="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             app:layout_constraintBottom_toTopOf="@+id/textViewPromptAge"
-            app:layout_constraintHorizontal_bias="0.99"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_bias="0.13"
             app:srcCompat="@drawable/bee_fragment_prompt_age" />
 
     </android.support.constraint.ConstraintLayout>
 
-</FrameLayout>
+
+    </FrameLayout>
+
+</ScrollView>

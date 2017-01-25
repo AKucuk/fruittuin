@@ -1,4 +1,11 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,61 +16,58 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="140dp"
-            android:layout_height="169dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            app:layout_constraintBottom_toTopOf="@+id/btnTemperatuur"
-            app:layout_constraintHorizontal_bias="0.99"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewPromptAge"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/bee_fragment_prompt_age" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="147dp"
-            android:layout_height="143dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginStart="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/txtTemperatuur"
-            app:layout_constraintHorizontal_bias="0.06"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewPromptAge"
-            app:layout_constraintVertical_bias="0.8"
-            app:srcCompat="@drawable/map_nederland" />
-
         <TextView
             android:id="@+id/textViewPromptAge"
-            android:layout_width="313dp"
-            android:layout_height="39dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:gravity="start|left"
             android:text="En waar kom je vandaan?"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.53"
+            app:layout_constraintBottom_toTopOf="@+id/imageView3"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.05" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="134dp"
+            android:layout_height="151dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView2"
+            app:layout_constraintHorizontal_bias="0.86"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewPromptAge"
+            app:srcCompat="@drawable/bee_fragment_prompt_age" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="138dp"
+            android:layout_height="118dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnTemperatuur"
+            app:layout_constraintHorizontal_bias="0.21"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            app:layout_constraintVertical_bias="0.75"
+            app:srcCompat="@drawable/map_nederland" />
+
 
         <Button
             android:id="@+id/btnTemperatuur"
@@ -95,7 +99,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/btnTemperatuur"
-            app:layout_constraintTop_toBottomOf="@+id/textViewPromptAge"
             app:layout_constraintVertical_bias="1.0" />
 
 
@@ -103,3 +106,5 @@
 
 
 </FrameLayout>
+
+</ScrollView>
