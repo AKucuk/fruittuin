@@ -48,7 +48,7 @@ public class AcclimatizeFragment extends Fragment {
             }
         });
 
-        new CountDownTimer(3000, 1000)
+        new CountDownTimer(180000, 1000)
         {
             public void onTick(long millisUntilFinished) {
                 txtTimer.setText(TimeHelper.getTimeFormatByMilliseconds(millisUntilFinished));

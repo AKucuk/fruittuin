@@ -91,8 +91,7 @@ public class PromptWindDirectionFragment extends Fragment {
             }
         });
 
-        //new CountDownTimer(30000, 1000)
-        new CountDownTimer(3000, 1000)
+        new CountDownTimer(30000, 1000)
         {
             public void onTick(long millisUntilFinished) {
                 txtWindDirectionTimer.setText(TimeHelper.getTimeFormatByMilliseconds(millisUntilFinished));
