@@ -34,7 +34,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Wordt een met de natuur"
+        android:text="Wordt één met de natuur"
         android:textSize="17dp"
         android:textStyle="bold" />
 
